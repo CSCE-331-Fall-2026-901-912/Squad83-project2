@@ -1,4 +1,6 @@
--- Shows the number of units sold for each menu item, grouped by month.
+-- Question: What are the best-selling menu items for each month?
+--
+-- Displays the menu item with the highest quantity sold for each month.
 
 SELECT
     TO_CHAR(DATE_TRUNC('month', o.order_time), 'YYYY-MM') AS month,

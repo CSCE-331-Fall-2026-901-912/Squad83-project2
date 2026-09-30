@@ -1,4 +1,13 @@
--- Shows completed sales grouped by payment method.
+-- Question: How much revenue comes from each payment method?
+--
+-- Displays the total number of orders and total revenue for each payment method.
+
+SELECT
+    payment_method,
+    COUNT(*) AS total_orders,
+    SUM(total) AS total_revenue
+FROM orders
+GROUP BY payment_method;
 
 SELECT
     o.payment_method,

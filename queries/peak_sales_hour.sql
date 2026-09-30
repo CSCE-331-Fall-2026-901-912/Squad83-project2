@@ -1,4 +1,6 @@
--- Shows the number of completed orders for each hour of the day.
+-- Question: What hours have the most sales?
+--
+-- Displays the total number of orders for each hour of the day.
 
 SELECT
     EXTRACT(HOUR FROM o.order_time) AS order_hour,
