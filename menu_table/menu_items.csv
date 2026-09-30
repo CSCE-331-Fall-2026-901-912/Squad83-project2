@@ -1,0 +1,40 @@
+menu_item_id,name,category,base_price,is_active
+1,Classic Pearl Milk Tea,Milk Tea,5.8,True
+2,Honey Pearl Milk Tea,Milk Tea,6.0,True
+3,Coffee Creama,Coffee,6.5,True
+4,Coffee Milk Tea w/ Coffee Jelly,Milk Tea,6.25,True
+5,Hokkaido Pearl Milk Tea,Milk Tea,6.25,True
+6,Thai Pearl Milk Tea,Milk Tea,6.25,True
+7,Taro Pearl Milk Tea,Milk Tea,6.25,True
+8,Mango Green Milk Tea,Milk Tea,6.5,True
+9,Golden Retriever,Specialty,6.75,True
+10,Coconut Pearl Milk Tea,Milk Tea,6.75,True
+11,Classic Tea,Fruit Tea,4.65,True
+12,Honey Tea,Fruit Tea,4.85,True
+13,Mango Green Tea,Fruit Tea,5.8,True
+14,Passion Chess,Specialty,6.25,True
+15,Berry Lychee Burst,Specialty,6.25,True
+16,Peach Tea w/ Honey Jelly,Fruit Tea,6.25,True
+17,Mango & Passion Fruit Tea,Fruit Tea,6.25,True
+18,Honey Lemonade,Lemonade,5.2,True
+19,Tiger Boba,Specialty,6.5,True
+20,Strawberry Coconut,Specialty,6.5,True
+21,Strawberry Coconut Ice Blended,Specialty,6.5,True
+22,Halo Halo,Specialty,6.95,True
+23,Halo Halo Ice Blended,Specialty,6.95,True
+24,Wintermelon Lemonade,Lemonade,5.8,True
+25,Wintermelon Lemonade Ice Blended,Lemonade,6.5,True
+26,Wintermelon w/ Fresh Milk,Specialty,5.2,True
+27,Matcha Pearl Milk Tea,Milk Tea,6.5,True
+28,Matcha Fresh Milk,Matcha,6.25,True
+29,Strawberry Matcha Fresh Milk,Matcha,6.5,True
+30,Mango Matcha Fresh Milk,Matcha,6.5,True
+31,Matcha Ice Blended,Matcha,6.5,True
+32,Oreo w/ Pearl,Specialty,6.75,True
+33,Taro w/ Pudding,Specialty,6.75,True
+34,Thai Tea w/ Pearl,Fruit Tea,6.75,True
+35,Coffee w/ Ice Cream,Coffee,6.75,True
+36,Mango w/ Ice Cream,Specialty,6.75,True
+37,Strawberry w/ Lychee Jelly & Ice Cream,Specialty,6.75,True
+38,Peach Tea w/ Lychee Jelly,Fruit Tea,6.95,True
+39,Lava Flow,Specialty,6.95,True
