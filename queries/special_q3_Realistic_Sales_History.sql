@@ -1,5 +1,8 @@
 -- Special Query 3: Realistic Sales History
 -- This query retrieves the hourly sales history, including the hour of the day, order count, and total sales for each hour.
+-- Question: Given a specific hour of the day, how many orders were
+--           placed and what was their total?
+-- Example:  "12 PM has 12345 orders totaling $86753"
 SELECT TO_CHAR(MAKE_TIME(EXTRACT(HOUR FROM order_time)::int, 0, 0), 'FMHH12 AM') AS hour_of_day,
        COUNT(*)                                                               AS order_count,
        SUM(total)                                                             AS hourly_sales
