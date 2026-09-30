@@ -1,3 +1,4 @@
+-- How many completed orders were made each day, and how much total revenue did each day generate?
 -- Shows total completed sales by day.
 SELECT
     DATE(order_time) AS sale_date,
