@@ -1,4 +1,5 @@
--- displays all items that are below the reorder threshold, and by how much --
+-- question: which inventory items are at or below their reorder thresholds and need replenishment? --
+-- displays all items that are below the order threshold, and by how much --
 
 SELECT
     inventory_id,
