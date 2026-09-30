@@ -1,3 +1,4 @@
+-- How many completed orders did each employee handle, and how much total revenue was associated with those orders?
 -- Shows the best-selling menu items based on total quantity sold.
 SELECT
     m.menu_item_id,
