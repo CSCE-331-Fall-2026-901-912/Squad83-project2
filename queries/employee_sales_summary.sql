@@ -1,6 +1,5 @@
 -- Which menu items have sold the highest total quantity?
--- Shows the number of completed orders handled by each employee
--- and the total sales associated with those orders.
+-- Shows the number of completed orders handled by each employee and the total sales associated with those orders.
 SELECT
     e.employee_id,
     e.first_name,
