@@ -1,2 +1,4 @@
 com\squad83\Database.class
+com\squad83\views\MenuView$MenuItem.class
+com\squad83\views\MenuView.class
 com\squad83\App.class
