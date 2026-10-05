@@ -2,6 +2,7 @@ package com.squad83;
 
 import com.squad83.views.MenuView;
 
+import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Side;
@@ -17,7 +18,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class App extends javafx.application.Application {
+public class App extends Application {
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -113,7 +114,15 @@ public class App extends javafx.application.Application {
 				reportsTab
 		);
 
+		Button homeButton = new Button("Back to Home");
+		homeButton.setOnAction(e -> showRoleSelection(primaryStage));
+
+		HBox bottomBar = new HBox(homeButton);
+		bottomBar.setAlignment(Pos.CENTER_RIGHT);
+		bottomBar.setPadding(new Insets(10, 0, 0, 0));
+
 		root.setCenter(tabPane);
+		root.setBottom(bottomBar);
 
 		Scene scene = new Scene(root, 1000, 650);
 
@@ -136,7 +145,15 @@ public class App extends javafx.application.Application {
 
 		tabPane.getTabs().add(cashierTab);
 
+		Button homeButton = new Button("Back to Home");
+		homeButton.setOnAction(e -> showRoleSelection(primaryStage));
+
+		HBox bottomBar = new HBox(homeButton);
+		bottomBar.setAlignment(Pos.CENTER_RIGHT);
+		bottomBar.setPadding(new Insets(10, 0, 0, 0));
+
 		root.setCenter(tabPane);
+		root.setBottom(bottomBar);
 
 		Scene scene = new Scene(root, 1000, 650);
 
