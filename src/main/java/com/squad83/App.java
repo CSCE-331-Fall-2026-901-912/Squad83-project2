@@ -1,5 +1,6 @@
 package com.squad83;
 
+import com.squad83.views.InventoryView;
 import com.squad83.views.MenuView;
 
 import javafx.application.Application;
@@ -88,7 +89,7 @@ public class App extends Application {
 
 		Tab inventoryTab = new Tab(
 				"Inventory",
-				createPlaceholder("Inventory")
+				InventoryView.getView()
 		);
 
 		inventoryTab.setClosable(false);
