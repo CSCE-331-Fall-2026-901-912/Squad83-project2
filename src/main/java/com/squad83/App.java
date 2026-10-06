@@ -2,6 +2,7 @@ package com.squad83;
 
 import com.squad83.views.InventoryView;
 import com.squad83.views.MenuView;
+import com.squad83.views.CashierView;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -139,7 +140,7 @@ public class App extends Application {
 
 		Tab cashierTab = new Tab(
 				"Cashier",
-				createPlaceholder("Cashier")
+				CashierView.getView()
 		);
 
 		cashierTab.setClosable(false);
