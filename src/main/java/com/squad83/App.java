@@ -1,5 +1,5 @@
 package com.squad83;
-
+import com.squad83.views.ReportsView;
 import com.squad83.views.InventoryView;
 import com.squad83.views.MenuView;
 import com.squad83.views.CashierView;
@@ -104,9 +104,9 @@ public class App extends Application {
 		employeeTab.setClosable(false);
 
 		Tab reportsTab = new Tab(
-				"Reports",
-				createPlaceholder("Reports")
-		);
+        "Reports",
+        ReportsView.getView()
+);
 
 		reportsTab.setClosable(false);
 
