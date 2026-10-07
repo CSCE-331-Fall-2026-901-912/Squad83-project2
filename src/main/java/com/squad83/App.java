@@ -3,6 +3,7 @@ package com.squad83;
 import com.squad83.views.InventoryView;
 import com.squad83.views.MenuView;
 import com.squad83.views.CashierView;
+import com.squad83.views.EmployeeView;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -97,7 +98,7 @@ public class App extends Application {
 
 		Tab employeeTab = new Tab(
 				"Employees",
-				createPlaceholder("Employees")
+				EmployeeView.getView()
 		);
 
 		employeeTab.setClosable(false);
