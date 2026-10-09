@@ -104,9 +104,9 @@ public class App extends Application {
 		employeeTab.setClosable(false);
 
 		Tab reportsTab = new Tab(
-        "Reports",
-        ReportsView.getView()
-);
+				"Reports",
+				ReportsView.getView()
+		);
 
 		reportsTab.setClosable(false);
 
