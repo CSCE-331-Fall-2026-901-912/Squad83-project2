@@ -58,12 +58,13 @@ public class ReportsView {
 				"Employee Sales",
 				"Peak Sales Hours",
 				"Sales by Payment Method",
-				"Inventory Reorder"
+				"Inventory Reorder",
+				"Product Usage Chart"
 		);
 
 		reportBox.setPromptText("Select a report");
 
-		// time window for reports that use one, defaults to the last 30 days
+		// Time window for reports that use one, defaults to the last 30 days.
 		startDatePicker = new DatePicker(LocalDate.now().minusDays(30));
 		startDatePicker.setPrefWidth(130);
 		startDatePicker.setDisable(true);
@@ -73,6 +74,7 @@ public class ReportsView {
 		endDatePicker.setDisable(true);
 
 		reportBox.valueProperty().addListener((obs, oldReport, newReport) -> {
+
 			boolean usesDates = usesTimeWindow(newReport);
 
 			startDatePicker.setDisable(!usesDates);
@@ -120,7 +122,9 @@ public class ReportsView {
 	}
 
 	private static boolean usesTimeWindow(String report) {
-		return "Sales by Item".equals(report);
+
+		return "Sales by Item".equals(report) ||
+				"Product Usage Chart".equals(report);
 	}
 
 	private static void generateReport() {
@@ -128,11 +132,7 @@ public class ReportsView {
 		String selectedReport = reportBox.getValue();
 
 		if (selectedReport == null) {
-			showError(
-					"No report selected.",
-					"Please select a report before generating."
-			);
-
+			showError("No report selected.", "Please select a report before generating.");
 			return;
 		}
 
@@ -145,7 +145,7 @@ public class ReportsView {
 		switch (selectedReport) {
 
 			case "Sales by Item":
-				// end date is inclusive, so the window runs up to the start of the next day
+				// End date is inclusive, so the window runs up to the start of the next day.
 				sql =
 						"SELECT " +
 						"m.name AS menu_item, " +
@@ -244,12 +244,30 @@ public class ReportsView {
 						"ORDER BY quantity_on_hand ASC";
 				break;
 
-			default:
-				showError(
-						"Invalid report.",
-						"The selected report could not be generated."
-				);
+			case "Product Usage Chart":
+				sql =
+						"SELECT " +
+						"i.name AS inventory_item, " +
+						"i.category, " +
+						"i.unit, " +
+						"ROUND(SUM(oi.quantity * mii.quantity_used)::numeric, 2) AS amount_used " +
+						"FROM orders o " +
+						"JOIN order_items oi " +
+						"ON o.order_id = oi.order_id " +
+						"JOIN menu_item_ingredients mii " +
+						"ON oi.menu_item_id = mii.menu_item_id " +
+						"JOIN inventory i " +
+						"ON mii.inventory_id = i.inventory_id " +
+						"WHERE o.status = 'completed' " +
+						"AND o.order_time >= ? " +
+						"AND o.order_time < ? " +
+						"AND oi.parent_order_item_id IS NULL " +
+						"GROUP BY i.inventory_id, i.name, i.category, i.unit " +
+						"ORDER BY amount_used DESC";
+				break;
 
+			default:
+				showError("Invalid report.", "The selected report could not be generated.");
 				return;
 		}
 
@@ -288,8 +306,19 @@ public class ReportsView {
 		) {
 
 			if (usesTimeWindow(reportName)) {
-				stmt.setTimestamp(1, Timestamp.valueOf(startDatePicker.getValue().atStartOfDay()));
-				stmt.setTimestamp(2, Timestamp.valueOf(endDatePicker.getValue().plusDays(1).atStartOfDay()));
+				stmt.setTimestamp(
+						1,
+						Timestamp.valueOf(
+								startDatePicker.getValue().atStartOfDay()
+						)
+				);
+
+				stmt.setTimestamp(
+						2,
+						Timestamp.valueOf(
+								endDatePicker.getValue().plusDays(1).atStartOfDay()
+						)
+				);
 			}
 
 			try (ResultSet rs = stmt.executeQuery()) {
@@ -338,20 +367,24 @@ public class ReportsView {
 
 			table.setItems(rows);
 
-			String summary = reportName + " - " + rows.size() + " result(s)";
+			String summary =
+					reportName +
+					" - " +
+					rows.size() +
+					" result(s)";
 
 			if (usesTimeWindow(reportName)) {
-				summary += " from " + startDatePicker.getValue() + " to " + endDatePicker.getValue();
+				summary +=
+						" from " +
+						startDatePicker.getValue() +
+						" to " +
+						endDatePicker.getValue();
 			}
 
 			resultLabel.setText(summary);
 
 		} catch (SQLException e) {
-
-			showError(
-					"Could not generate report.",
-					e.getMessage()
-			);
+			showError("Could not generate report.", e.getMessage());
 		}
 	}
 
