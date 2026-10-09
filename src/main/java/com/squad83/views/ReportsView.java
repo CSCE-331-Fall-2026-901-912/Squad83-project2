@@ -6,10 +6,12 @@ import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,270 +25,357 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 
 public class ReportsView {
 
-    private static TableView<ObservableList<String>> table;
-    private static ComboBox<String> reportBox;
-    private static Label resultLabel;
+	private static TableView<ObservableList<String>> table;
+	private static ComboBox<String> reportBox;
+	private static DatePicker startDatePicker;
+	private static DatePicker endDatePicker;
+	private static Label resultLabel;
 
-    public static Parent getView() {
+	public static Parent getView() {
 
-        BorderPane root = new BorderPane();
-        root.setPadding(new Insets(15));
+		BorderPane root = new BorderPane();
+		root.setPadding(new Insets(15));
 
-        Label title = new Label("Manager Reports");
-        title.setStyle(
-                "-fx-font-size: 24px;" +
-                "-fx-font-weight: bold;"
-        );
+		Label title = new Label("Manager Reports");
+		title.setStyle(
+				"-fx-font-size: 24px;" +
+				"-fx-font-weight: bold;"
+		);
 
-        root.setTop(title);
+		root.setTop(title);
 
-        reportBox = new ComboBox<>();
+		reportBox = new ComboBox<>();
 
-        reportBox.getItems().addAll(
-                "Daily Sales",
-                "Best Selling Items",
-                "Employee Sales",
-                "Peak Sales Hours",
-                "Sales by Payment Method",
-                "Inventory Reorder"
-        );
+		reportBox.getItems().addAll(
+				"Sales by Item",
+				"Daily Sales",
+				"Best Selling Items",
+				"Employee Sales",
+				"Peak Sales Hours",
+				"Sales by Payment Method",
+				"Inventory Reorder"
+		);
 
-        reportBox.setPromptText("Select a report");
+		reportBox.setPromptText("Select a report");
 
-        Button generateButton = new Button("Generate Report");
-        Button clearButton = new Button("Clear");
+		// time window for reports that use one, defaults to the last 30 days
+		startDatePicker = new DatePicker(LocalDate.now().minusDays(30));
+		startDatePicker.setPrefWidth(130);
+		startDatePicker.setDisable(true);
 
-        generateButton.setOnAction(e -> generateReport());
-        clearButton.setOnAction(e -> clearReport());
+		endDatePicker = new DatePicker(LocalDate.now());
+		endDatePicker.setPrefWidth(130);
+		endDatePicker.setDisable(true);
 
-        HBox controls = new HBox(
-                10,
-                new Label("Report:"),
-                reportBox,
-                generateButton,
-                clearButton
-        );
+		reportBox.valueProperty().addListener((obs, oldReport, newReport) -> {
+			boolean usesDates = usesTimeWindow(newReport);
 
-        table = new TableView<>();
+			startDatePicker.setDisable(!usesDates);
+			endDatePicker.setDisable(!usesDates);
+		});
 
-        resultLabel = new Label("Select a report to begin.");
+		Button generateButton = new Button("Generate Report");
+		Button clearButton = new Button("Clear");
 
-        VBox content = new VBox(
-                15,
-                controls,
-                table,
-                resultLabel
-        );
+		generateButton.setOnAction(e -> generateReport());
+		clearButton.setOnAction(e -> clearReport());
 
-        VBox.setVgrow(table, Priority.ALWAYS);
+		HBox controls = new HBox(
+				10,
+				new Label("Report:"),
+				reportBox,
+				new Label("From:"),
+				startDatePicker,
+				new Label("To:"),
+				endDatePicker,
+				generateButton,
+				clearButton
+		);
 
-        root.setCenter(content);
+		controls.setAlignment(Pos.CENTER_LEFT);
 
-        return root;
-    }
+		table = new TableView<>();
 
-    private static void generateReport() {
+		resultLabel = new Label("Select a report to begin.");
 
-        String selectedReport = reportBox.getValue();
+		VBox content = new VBox(
+				15,
+				controls,
+				table,
+				resultLabel
+		);
 
-        if (selectedReport == null) {
-            showError(
-                    "No report selected.",
-                    "Please select a report before generating."
-            );
+		content.setPadding(new Insets(15, 0, 0, 0));
 
-            return;
-        }
+		VBox.setVgrow(table, Priority.ALWAYS);
 
-        String sql;
+		root.setCenter(content);
 
-        switch (selectedReport) {
+		return root;
+	}
 
-            case "Daily Sales":
-                sql =
-                        "SELECT " +
-                        "DATE(order_time) AS sale_date, " +
-                        "COUNT(*) AS total_orders, " +
-                        "ROUND(SUM(total)::numeric, 2) AS total_sales " +
-                        "FROM orders " +
-                        "WHERE status = 'completed' " +
-                        "GROUP BY DATE(order_time) " +
-                        "ORDER BY sale_date DESC";
-                break;
+	private static boolean usesTimeWindow(String report) {
+		return "Sales by Item".equals(report);
+	}
 
-            case "Best Selling Items":
-                sql =
-                        "SELECT " +
-                        "m.name AS menu_item, " +
-                        "SUM(oi.quantity) AS quantity_sold " +
-                        "FROM order_items oi " +
-                        "JOIN menu_items m " +
-                        "ON oi.menu_item_id = m.menu_item_id " +
-                        "JOIN orders o " +
-                        "ON oi.order_id = o.order_id " +
-                        "WHERE o.status = 'completed' " +
-                        "GROUP BY m.menu_item_id, m.name " +
-                        "ORDER BY quantity_sold DESC";
-                break;
+	private static void generateReport() {
 
-            case "Employee Sales":
-                sql =
-                        "SELECT " +
-                        "e.employee_id, " +
-                        "e.first_name, " +
-                        "e.last_name, " +
-                        "COUNT(o.order_id) AS total_orders, " +
-                        "ROUND(SUM(o.total)::numeric, 2) AS total_sales " +
-                        "FROM employees e " +
-                        "JOIN orders o " +
-                        "ON e.employee_id = o.employee_id " +
-                        "WHERE o.status = 'completed' " +
-                        "GROUP BY e.employee_id, e.first_name, e.last_name " +
-                        "ORDER BY total_sales DESC";
-                break;
+		String selectedReport = reportBox.getValue();
 
-            case "Peak Sales Hours":
-                sql =
-                        "SELECT " +
-                        "EXTRACT(HOUR FROM order_time)::int AS hour, " +
-                        "COUNT(*) AS total_orders, " +
-                        "ROUND(SUM(total)::numeric, 2) AS total_sales " +
-                        "FROM orders " +
-                        "WHERE status = 'completed' " +
-                        "GROUP BY EXTRACT(HOUR FROM order_time) " +
-                        "ORDER BY total_sales DESC";
-                break;
+		if (selectedReport == null) {
+			showError(
+					"No report selected.",
+					"Please select a report before generating."
+			);
 
-            case "Sales by Payment Method":
-                sql =
-                        "SELECT " +
-                        "payment_method, " +
-                        "COUNT(*) AS total_orders, " +
-                        "ROUND(SUM(total)::numeric, 2) AS total_sales " +
-                        "FROM orders " +
-                        "WHERE status = 'completed' " +
-                        "GROUP BY payment_method " +
-                        "ORDER BY total_sales DESC";
-                break;
+			return;
+		}
 
-            case "Inventory Reorder":
-                sql =
-                        "SELECT " +
-                        "inventory_id, " +
-                        "name, " +
-                        "quantity_on_hand, " +
-                        "reorder_threshold, " +
-                        "unit " +
-                        "FROM inventory " +
-                        "WHERE quantity_on_hand <= reorder_threshold " +
-                        "ORDER BY quantity_on_hand ASC";
-                break;
+		if (usesTimeWindow(selectedReport) && !validateDates()) {
+			return;
+		}
 
-            default:
-                showError(
-                        "Invalid report.",
-                        "The selected report could not be generated."
-                );
+		String sql;
 
-                return;
-        }
+		switch (selectedReport) {
 
-        loadReport(sql, selectedReport);
-    }
+			case "Sales by Item":
+				// end date is inclusive, so the window runs up to the start of the next day
+				sql =
+						"SELECT " +
+						"m.name AS menu_item, " +
+						"m.category, " +
+						"SUM(oi.quantity) AS quantity_sold, " +
+						"ROUND(SUM(oi.quantity * oi.unit_price)::numeric, 2) AS item_sales " +
+						"FROM order_items oi " +
+						"JOIN menu_items m " +
+						"ON oi.menu_item_id = m.menu_item_id " +
+						"JOIN orders o " +
+						"ON oi.order_id = o.order_id " +
+						"WHERE o.status = 'completed' " +
+						"AND o.order_time >= ? " +
+						"AND o.order_time < ? " +
+						"GROUP BY m.menu_item_id, m.name, m.category " +
+						"ORDER BY item_sales DESC";
+				break;
 
-    private static void loadReport(String sql, String reportName) {
+			case "Daily Sales":
+				sql =
+						"SELECT " +
+						"DATE(order_time) AS sale_date, " +
+						"COUNT(*) AS total_orders, " +
+						"ROUND(SUM(total)::numeric, 2) AS total_sales " +
+						"FROM orders " +
+						"WHERE status = 'completed' " +
+						"GROUP BY DATE(order_time) " +
+						"ORDER BY sale_date DESC";
+				break;
 
-        ObservableList<ObservableList<String>> rows =
-                FXCollections.observableArrayList();
+			case "Best Selling Items":
+				sql =
+						"SELECT " +
+						"m.name AS menu_item, " +
+						"SUM(oi.quantity) AS quantity_sold " +
+						"FROM order_items oi " +
+						"JOIN menu_items m " +
+						"ON oi.menu_item_id = m.menu_item_id " +
+						"JOIN orders o " +
+						"ON oi.order_id = o.order_id " +
+						"WHERE o.status = 'completed' " +
+						"GROUP BY m.menu_item_id, m.name " +
+						"ORDER BY quantity_sold DESC";
+				break;
 
-        table.getColumns().clear();
-        table.getItems().clear();
+			case "Employee Sales":
+				sql =
+						"SELECT " +
+						"e.employee_id, " +
+						"e.first_name, " +
+						"e.last_name, " +
+						"COUNT(o.order_id) AS total_orders, " +
+						"ROUND(SUM(o.total)::numeric, 2) AS total_sales " +
+						"FROM employees e " +
+						"JOIN orders o " +
+						"ON e.employee_id = o.employee_id " +
+						"WHERE o.status = 'completed' " +
+						"GROUP BY e.employee_id, e.first_name, e.last_name " +
+						"ORDER BY total_sales DESC";
+				break;
 
-        try (
-                Connection conn = Database.getConnection();
-                PreparedStatement stmt = conn.prepareStatement(sql);
-                ResultSet rs = stmt.executeQuery()
-        ) {
+			case "Peak Sales Hours":
+				sql =
+						"SELECT " +
+						"EXTRACT(HOUR FROM order_time)::int AS hour, " +
+						"COUNT(*) AS total_orders, " +
+						"ROUND(SUM(total)::numeric, 2) AS total_sales " +
+						"FROM orders " +
+						"WHERE status = 'completed' " +
+						"GROUP BY EXTRACT(HOUR FROM order_time) " +
+						"ORDER BY total_sales DESC";
+				break;
 
-            ResultSetMetaData metadata = rs.getMetaData();
+			case "Sales by Payment Method":
+				sql =
+						"SELECT " +
+						"payment_method, " +
+						"COUNT(*) AS total_orders, " +
+						"ROUND(SUM(total)::numeric, 2) AS total_sales " +
+						"FROM orders " +
+						"WHERE status = 'completed' " +
+						"GROUP BY payment_method " +
+						"ORDER BY total_sales DESC";
+				break;
 
-            int columnCount = metadata.getColumnCount();
+			case "Inventory Reorder":
+				sql =
+						"SELECT " +
+						"inventory_id, " +
+						"name, " +
+						"quantity_on_hand, " +
+						"reorder_threshold, " +
+						"unit " +
+						"FROM inventory " +
+						"WHERE quantity_on_hand <= reorder_threshold " +
+						"ORDER BY quantity_on_hand ASC";
+				break;
 
-            for (int i = 1; i <= columnCount; i++) {
+			default:
+				showError(
+						"Invalid report.",
+						"The selected report could not be generated."
+				);
 
-                final int columnIndex = i - 1;
+				return;
+		}
 
-                String columnName = metadata.getColumnLabel(i);
+		loadReport(sql, selectedReport);
+	}
 
-                TableColumn<ObservableList<String>, String> column =
-                        new TableColumn<>(columnName);
+	private static boolean validateDates() {
 
-                column.setCellValueFactory(
-                        data -> new ReadOnlyStringWrapper(
-                                data.getValue().get(columnIndex)
-                        )
-                );
+		LocalDate startDate = startDatePicker.getValue();
+		LocalDate endDate = endDatePicker.getValue();
 
-                table.getColumns().add(column);
-            }
+		if (startDate == null || endDate == null) {
+			showError("Invalid time window.", "Please select both a start and end date.");
+			return false;
+		}
 
-            while (rs.next()) {
+		if (startDate.isAfter(endDate)) {
+			showError("Invalid time window.", "Start date must be on or before the end date.");
+			return false;
+		}
 
-                ObservableList<String> row =
-                        FXCollections.observableArrayList();
+		return true;
+	}
 
-                for (int i = 1; i <= columnCount; i++) {
+	private static void loadReport(String sql, String reportName) {
 
-                    Object value = rs.getObject(i);
+		ObservableList<ObservableList<String>> rows =
+				FXCollections.observableArrayList();
 
-                    if (value == null) {
-                        row.add("");
-                    } else {
-                        row.add(value.toString());
-                    }
-                }
+		table.getColumns().clear();
+		table.getItems().clear();
 
-                rows.add(row);
-            }
+		try (
+				Connection conn = Database.getConnection();
+				PreparedStatement stmt = conn.prepareStatement(sql)
+		) {
 
-            table.setItems(rows);
+			if (usesTimeWindow(reportName)) {
+				stmt.setTimestamp(1, Timestamp.valueOf(startDatePicker.getValue().atStartOfDay()));
+				stmt.setTimestamp(2, Timestamp.valueOf(endDatePicker.getValue().plusDays(1).atStartOfDay()));
+			}
 
-            resultLabel.setText(
-                    reportName + " - " +
-                    rows.size() +
-                    " result(s)"
-            );
+			try (ResultSet rs = stmt.executeQuery()) {
 
-        } catch (SQLException e) {
+				ResultSetMetaData metadata = rs.getMetaData();
 
-            showError(
-                    "Could not generate report.",
-                    e.getMessage()
-            );
-        }
-    }
+				int columnCount = metadata.getColumnCount();
 
-    private static void clearReport() {
+				for (int i = 1; i <= columnCount; i++) {
 
-        reportBox.setValue(null);
+					final int columnIndex = i - 1;
 
-        table.getColumns().clear();
-        table.getItems().clear();
+					String columnName = metadata.getColumnLabel(i);
 
-        resultLabel.setText("Select a report to begin.");
-    }
+					TableColumn<ObservableList<String>, String> column =
+							new TableColumn<>(columnName);
 
-    private static void showError(String title, String message) {
+					column.setCellValueFactory(
+							data -> new ReadOnlyStringWrapper(
+									data.getValue().get(columnIndex)
+							)
+					);
 
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+					table.getColumns().add(column);
+				}
 
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
+				while (rs.next()) {
 
-        alert.showAndWait();
-    }
+					ObservableList<String> row =
+							FXCollections.observableArrayList();
+
+					for (int i = 1; i <= columnCount; i++) {
+
+						Object value = rs.getObject(i);
+
+						if (value == null) {
+							row.add("");
+						} else {
+							row.add(value.toString());
+						}
+					}
+
+					rows.add(row);
+				}
+			}
+
+			table.setItems(rows);
+
+			String summary = reportName + " - " + rows.size() + " result(s)";
+
+			if (usesTimeWindow(reportName)) {
+				summary += " from " + startDatePicker.getValue() + " to " + endDatePicker.getValue();
+			}
+
+			resultLabel.setText(summary);
+
+		} catch (SQLException e) {
+
+			showError(
+					"Could not generate report.",
+					e.getMessage()
+			);
+		}
+	}
+
+	private static void clearReport() {
+
+		reportBox.setValue(null);
+
+		startDatePicker.setValue(LocalDate.now().minusDays(30));
+		endDatePicker.setValue(LocalDate.now());
+
+		table.getColumns().clear();
+		table.getItems().clear();
+
+		resultLabel.setText("Select a report to begin.");
+	}
+
+	private static void showError(String title, String message) {
+
+		Alert alert = new Alert(Alert.AlertType.ERROR);
+
+		alert.setTitle(title);
+		alert.setHeaderText(null);
+		alert.setContentText(message);
+
+		alert.showAndWait();
+	}
 }
