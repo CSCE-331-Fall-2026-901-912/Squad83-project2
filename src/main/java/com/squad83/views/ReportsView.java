@@ -58,7 +58,8 @@ public class ReportsView {
 				"Employee Sales",
 				"Peak Sales Hours",
 				"Sales by Payment Method",
-				"Inventory Reorder"
+				"Inventory Reorder",
+				"X-Report"
 		);
 
 		reportBox.setPromptText("Select a report");
@@ -243,7 +244,11 @@ public class ReportsView {
 						"WHERE quantity_on_hand <= reorder_threshold " +
 						"ORDER BY quantity_on_hand ASC";
 				break;
+						case "X-Report":
+				sql = XReportQuery.getSql();
+				break;
 
+	
 			default:
 				showError(
 						"Invalid report.",
