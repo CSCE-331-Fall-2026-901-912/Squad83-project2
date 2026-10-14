@@ -52,16 +52,17 @@ public class ReportsView {
 		reportBox = new ComboBox<>();
 
 		reportBox.getItems().addAll(
-				"Sales by Item",
-				"Daily Sales",
-				"Best Selling Items",
-				"Employee Sales",
-				"Peak Sales Hours",
-				"Sales by Payment Method",
-				"Inventory Reorder",
-				"Product Usage Chart",
-				"X-Report"
-		);
+        "Sales by Item",
+        "Daily Sales",
+        "Best Selling Items",
+        "Employee Sales",
+        "Peak Sales Hours",
+        "Sales by Payment Method",
+        "Inventory Reorder",
+        "Product Usage Chart",
+        "X-Report",
+        "Audit Report"
+);
 
 		reportBox.setPromptText("Select a report");
 
@@ -124,9 +125,10 @@ public class ReportsView {
 
 	private static boolean usesTimeWindow(String report) {
 
-		return "Sales by Item".equals(report) ||
-				"Product Usage Chart".equals(report);
-	}
+    return "Sales by Item".equals(report) ||
+            "Product Usage Chart".equals(report) ||
+            "Audit Report".equals(report);
+}
 
 	private static void generateReport() {
 
@@ -268,12 +270,36 @@ public class ReportsView {
 				break;
 
 			case "X-Report":
-				sql = XReportQuery.getSql();
-				break;
+    sql = XReportQuery.getSql();
+    break;
 
-			default:
-				showError("Invalid report.", "The selected report could not be generated.");
-				return;
+case "Audit Report":
+    sql =
+            "SELECT " +
+            "types.transaction_type, " +
+            "COUNT(o.order_id) AS transaction_count, " +
+            "ROUND(COALESCE(SUM(o.total), 0), 2) AS total_amount " +
+            "FROM (VALUES " +
+            "('completed', 'Completed Sales'), " +
+            "('voided', 'Voids'), " +
+            "('refunded', 'Returns / Refunds'), " +
+            "('discard', 'Discards') " +
+            ") AS types(status, transaction_type) " +
+            "LEFT JOIN orders o " +
+            "ON o.status = types.status " +
+            "AND o.order_time >= ? " +
+            "AND o.order_time < ? " +
+            "GROUP BY types.status, types.transaction_type " +
+            "ORDER BY CASE types.status " +
+            "WHEN 'completed' THEN 1 " +
+            "WHEN 'voided' THEN 2 " +
+            "WHEN 'refunded' THEN 3 " +
+            "WHEN 'discard' THEN 4 END";
+    break;
+
+default:
+    showError("Invalid report.", "The selected report could not be generated.");
+    return;
 		}
 
 		loadReport(sql, selectedReport);
