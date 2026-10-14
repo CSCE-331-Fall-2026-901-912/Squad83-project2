@@ -59,7 +59,8 @@ public class ReportsView {
 				"Peak Sales Hours",
 				"Sales by Payment Method",
 				"Inventory Reorder",
-				"Product Usage Chart"
+				"Product Usage Chart",
+				"X-Report"
 		);
 
 		reportBox.setPromptText("Select a report");
@@ -264,6 +265,10 @@ public class ReportsView {
 						"AND oi.parent_order_item_id IS NULL " +
 						"GROUP BY i.inventory_id, i.name, i.category, i.unit " +
 						"ORDER BY amount_used DESC";
+				break;
+
+			case "X-Report":
+				sql = XReportQuery.getSql();
 				break;
 
 			default:
