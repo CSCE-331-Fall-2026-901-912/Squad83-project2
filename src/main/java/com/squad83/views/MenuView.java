@@ -30,6 +30,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * JavaFX view for managing the menu items of the shop. It displays all menu
+ * items in a table and provides a form to add, update, remove (deactivate),
+ * clear, and refresh items stored in the database.
+ *
+ * @author Squad 83
+ */
 public class MenuView {
 
 	private static TableView<MenuItem> table;
@@ -38,6 +45,13 @@ public class MenuView {
 	private static ComboBox<String> categoryBox;
 	private static CheckBox activeBox;
 
+	/**
+	 * Builds the menu management screen, including the title, the menu item
+	 * table, the input form, and the action buttons. Menu items are loaded
+	 * from the database before the view is returned.
+	 *
+	 * @return the root node of the menu items view
+	 */
 	public static Parent getView() {
 
 		BorderPane root = new BorderPane();
@@ -158,6 +172,14 @@ public class MenuView {
 		return root;
 	}
 
+	/**
+	 * Loads all menu items from the database, ordered by item ID, and places
+	 * them in the table. If a database error occurs, an error dialog is shown
+	 * instead of propagating the exception.
+	 *
+	 * @throws SQLException handled internally; a failed query or connection is
+	 *                      reported to the user through an error dialog
+	 */
 	private static void loadItems() {
 
 		ObservableList<MenuItem> items = FXCollections.observableArrayList();
@@ -191,6 +213,16 @@ public class MenuView {
 		}
 	}
 
+	/**
+	 * Validates the form and inserts a new menu item into the database using
+	 * the values currently entered. On success the table is refreshed and the
+	 * form is cleared.
+	 *
+	 * @throws SQLException          handled internally; a database failure is
+	 *                               reported through an error dialog
+	 * @throws NumberFormatException handled internally; an unparsable price is
+	 *                               reported through an error dialog
+	 */
 	private static void addItem() {
 
 		if (!validateForm()) {
@@ -221,6 +253,16 @@ public class MenuView {
 		}
 	}
 
+	/**
+	 * Updates the menu item selected in the table with the values currently in
+	 * the form. An error is shown if no item is selected or the form is
+	 * invalid. On success the table is refreshed and the form is cleared.
+	 *
+	 * @throws SQLException          handled internally; a database failure is
+	 *                               reported through an error dialog
+	 * @throws NumberFormatException handled internally; an unparsable price is
+	 *                               reported through an error dialog
+	 */
 	private static void updateItem() {
 
 		MenuItem selected = table.getSelectionModel().getSelectedItem();
@@ -262,6 +304,14 @@ public class MenuView {
 		}
 	}
 
+	/**
+	 * Removes the selected menu item after the user confirms. The item is not
+	 * deleted; it is marked inactive in the database. An error is shown if no
+	 * item is selected.
+	 *
+	 * @throws SQLException handled internally; a database failure is reported
+	 *                      through an error dialog
+	 */
 	private static void removeItem() {
 
 		MenuItem selected = table.getSelectionModel().getSelectedItem();
@@ -303,6 +353,15 @@ public class MenuView {
 		}
 	}
 
+	/**
+	 * Checks that the form fields hold valid input: the name must not be
+	 * empty, a category must be chosen, and the price must be a non-negative
+	 * number. An error dialog is shown for the first problem found.
+	 *
+	 * @return {@code true} if all form fields are valid, {@code false} otherwise
+	 * @throws NumberFormatException handled internally; an unparsable price is
+	 *                               reported through an error dialog
+	 */
 	private static boolean validateForm() {
 
 		if (nameField.getText().trim().isEmpty()) {
@@ -331,6 +390,11 @@ public class MenuView {
 		return true;
 	}
 
+	/**
+	 * Resets the form to its default state by clearing the name and price
+	 * fields, removing the category selection, checking the active box, and
+	 * clearing the table selection.
+	 */
 	private static void clearForm() {
 
 		nameField.clear();
@@ -341,6 +405,12 @@ public class MenuView {
 		table.getSelectionModel().clearSelection();
 	}
 
+	/**
+	 * Displays a modal error dialog and waits for the user to close it.
+	 *
+	 * @param title   the title of the dialog window
+	 * @param message the message shown in the dialog body
+	 */
 	private static void showError(String title, String message) {
 
 		Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -350,6 +420,12 @@ public class MenuView {
 		alert.showAndWait();
 	}
 
+	/**
+	 * Model class representing a single row of the menu items table. Fields
+	 * are stored as JavaFX properties so the table can bind to them.
+	 *
+	 * @author Squad 83
+	 */
 	public static class MenuItem {
 
 		private final SimpleIntegerProperty id;
@@ -358,6 +434,15 @@ public class MenuView {
 		private final SimpleStringProperty price;
 		private final SimpleBooleanProperty active;
 
+		/**
+		 * Creates a menu item with the given values.
+		 *
+		 * @param id       the unique menu item ID
+		 * @param name     the display name of the item
+		 * @param category the menu category of the item
+		 * @param price    the base price of the item, as text
+		 * @param active   whether the item is currently active on the menu
+		 */
 		public MenuItem(int id, String name, String category, String price, boolean active) {
 
 			this.id = new SimpleIntegerProperty(id);
@@ -367,42 +452,92 @@ public class MenuView {
 			this.active = new SimpleBooleanProperty(active);
 		}
 
+		/**
+		 * Gets the menu item ID.
+		 *
+		 * @return the menu item ID
+		 */
 		public int getId() {
 			return id.get();
 		}
 
+		/**
+		 * Gets the ID property for table binding.
+		 *
+		 * @return the ID property
+		 */
 		public SimpleIntegerProperty idProperty() {
 			return id;
 		}
 
+		/**
+		 * Gets the item name.
+		 *
+		 * @return the item name
+		 */
 		public String getName() {
 			return name.get();
 		}
 
+		/**
+		 * Gets the name property for table binding.
+		 *
+		 * @return the name property
+		 */
 		public SimpleStringProperty nameProperty() {
 			return name;
 		}
 
+		/**
+		 * Gets the item category.
+		 *
+		 * @return the item category
+		 */
 		public String getCategory() {
 			return category.get();
 		}
 
+		/**
+		 * Gets the category property for table binding.
+		 *
+		 * @return the category property
+		 */
 		public SimpleStringProperty categoryProperty() {
 			return category;
 		}
 
+		/**
+		 * Gets the item price.
+		 *
+		 * @return the item price, as text
+		 */
 		public String getPrice() {
 			return price.get();
 		}
 
+		/**
+		 * Gets the price property for table binding.
+		 *
+		 * @return the price property
+		 */
 		public SimpleStringProperty priceProperty() {
 			return price;
 		}
 
+		/**
+		 * Checks whether the item is active on the menu.
+		 *
+		 * @return {@code true} if the item is active, {@code false} otherwise
+		 */
 		public boolean isActive() {
 			return active.get();
 		}
 
+		/**
+		 * Gets the active property for table binding.
+		 *
+		 * @return the active property
+		 */
 		public SimpleBooleanProperty activeProperty() {
 			return active;
 		}
