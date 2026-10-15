@@ -4,6 +4,7 @@ import com.squad83.views.InventoryView;
 import com.squad83.views.MenuView;
 import com.squad83.views.CashierView;
 import com.squad83.views.EmployeeView;
+import com.squad83.views.SeasonalItemView;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -110,12 +111,22 @@ public class App extends Application {
 
 		reportsTab.setClosable(false);
 
+		Tab seasonalTab = new Tab(
+   			"Seasonal Item",
+   			SeasonalItemView.getView()
+   		);
+
+   		seasonalTab.setClosable(false);
+
 		tabPane.getTabs().addAll(
 				menuTab,
 				inventoryTab,
 				employeeTab,
-				reportsTab
+				reportsTab,
+				seasonalTab
 		);
+
+		
 
 		Button homeButton = new Button("Back to Home");
 		homeButton.setOnAction(e -> showRoleSelection(primaryStage));
