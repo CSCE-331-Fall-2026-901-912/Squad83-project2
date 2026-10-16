@@ -112,11 +112,11 @@ public class App extends Application {
 		reportsTab.setClosable(false);
 
 		Tab seasonalTab = new Tab(
-   			"Seasonal Item",
-   			SeasonalItemView.getView()
-   		);
+			"Seasonal Item",
+			SeasonalItemView.getView()
+		);
 
-   		seasonalTab.setClosable(false);
+		seasonalTab.setClosable(false);
 
 		tabPane.getTabs().addAll(
 				menuTab,
