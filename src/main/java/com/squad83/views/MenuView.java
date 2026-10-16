@@ -176,9 +176,6 @@ public class MenuView {
 	 * Loads all menu items from the database, ordered by item ID, and places
 	 * them in the table. If a database error occurs, an error dialog is shown
 	 * instead of propagating the exception.
-	 *
-	 * @throws SQLException handled internally; a failed query or connection is
-	 *                      reported to the user through an error dialog
 	 */
 	private static void loadItems() {
 
@@ -217,11 +214,6 @@ public class MenuView {
 	 * Validates the form and inserts a new menu item into the database using
 	 * the values currently entered. On success the table is refreshed and the
 	 * form is cleared.
-	 *
-	 * @throws SQLException          handled internally; a database failure is
-	 *                               reported through an error dialog
-	 * @throws NumberFormatException handled internally; an unparsable price is
-	 *                               reported through an error dialog
 	 */
 	private static void addItem() {
 
@@ -257,11 +249,6 @@ public class MenuView {
 	 * Updates the menu item selected in the table with the values currently in
 	 * the form. An error is shown if no item is selected or the form is
 	 * invalid. On success the table is refreshed and the form is cleared.
-	 *
-	 * @throws SQLException          handled internally; a database failure is
-	 *                               reported through an error dialog
-	 * @throws NumberFormatException handled internally; an unparsable price is
-	 *                               reported through an error dialog
 	 */
 	private static void updateItem() {
 
@@ -308,9 +295,6 @@ public class MenuView {
 	 * Removes the selected menu item after the user confirms. The item is not
 	 * deleted; it is marked inactive in the database. An error is shown if no
 	 * item is selected.
-	 *
-	 * @throws SQLException handled internally; a database failure is reported
-	 *                      through an error dialog
 	 */
 	private static void removeItem() {
 
@@ -359,8 +343,6 @@ public class MenuView {
 	 * number. An error dialog is shown for the first problem found.
 	 *
 	 * @return {@code true} if all form fields are valid, {@code false} otherwise
-	 * @throws NumberFormatException handled internally; an unparsable price is
-	 *                               reported through an error dialog
 	 */
 	private static boolean validateForm() {
 
