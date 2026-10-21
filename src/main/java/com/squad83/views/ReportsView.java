@@ -28,14 +28,63 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
+/**
+ * Provides the JavaFX manager interface for creating and viewing operational
+ * reports from the Squad 83 point-of-sale PostgreSQL database.
+ *
+ * <p>Managers select a report from a drop-down menu, optionally choose a date
+ * range, and view query results in a table whose columns are generated from
+ * the result-set metadata. The available reports are:</p>
+ * <ul>
+ *   <li><b>Sales by Item:</b> quantities sold and sales totals for each menu item
+ *       over a selected date range, including only completed orders.</li>
+ *   <li><b>Daily Sales:</b> number of completed orders and total sales by day.</li>
+ *   <li><b>Best Selling Items:</b> menu items ranked by quantities sold.</li>
+ *   <li><b>Employee Sales:</b> completed order counts and sales by employee.</li>
+ *   <li><b>Peak Sales Hours:</b> completed order counts and sales grouped by hour.</li>
+ *   <li><b>Sales by Payment Method:</b> completed orders and sales by payment type.</li>
+ *   <li><b>Inventory Reorder:</b> inventory items at or below their reorder levels.</li>
+ *   <li><b>Product Usage Chart:</b> estimated ingredient usage for completed,
+ *       top-level order items within a selected date range.</li>
+ *   <li><b>X-Report:</b> hourly order and sales totals for the latest qualifying
+ *       day, with an overall total, using {@link XReportQuery#getSql()}.</li>
+ *   <li><b>Audit Report:</b> counts and monetary totals for completed sales,
+ *       voids, refunds, and discards within a selected date range.</li>
+ * </ul>
+ *
+ * <p>This class uses static controls and helper methods to manage the report
+ * selection, query execution, display, and error dialogs.</p>
+ *
+ * @see com.squad83.Database
+ * @see XReportQuery
+ */
 public class ReportsView {
 
+    /** Table displaying the columns and rows returned by the selected report. */
 	private static TableView<ObservableList<String>> table;
+
+    /** Drop-down control used to select which management report to generate. */
 	private static ComboBox<String> reportBox;
+
+    /** Inclusive start date for reports that support a selected time window. */
 	private static DatePicker startDatePicker;
+
+    /** Inclusive end date for reports that support a selected time window. */
 	private static DatePicker endDatePicker;
+
+    /** Label displaying instructions or the latest report's result summary. */
 	private static Label resultLabel;
 
+    /**
+     * Creates the manager reporting view and initializes its JavaFX controls.
+     *
+     * <p>The view includes a report selector, start and end date pickers, buttons
+     * for generating and clearing a report, a results table, and a status label.
+     * Date pickers begin with a 30-day range and are enabled only for reports
+     * that support date filtering.</p>
+     *
+     * @return the root {@link Parent} containing the reporting interface
+     */
 	public static Parent getView() {
 
 		BorderPane root = new BorderPane();
@@ -123,6 +172,16 @@ public class ReportsView {
 		return root;
 	}
 
+    /**
+     * Determines whether a selected report accepts a start and end date.
+     *
+     * <p>Only Sales by Item, Product Usage Chart, and Audit Report use the
+     * date pickers. Other reports use their own SQL-defined time scope.</p>
+     *
+     * @param report the selected report name; may be {@code null}
+     * @return {@code true} when the report accepts a custom date range;
+     *         {@code false} otherwise
+     */
 	private static boolean usesTimeWindow(String report) {
 
     return "Sales by Item".equals(report) ||
@@ -130,6 +189,23 @@ public class ReportsView {
             "Audit Report".equals(report);
 }
 
+    /**
+     * Builds the SQL statement for the selected report and requests its results.
+     *
+     * <p>The report selector determines which SQL query to use. Queries for
+     * completed-order reports filter by order status. For Sales by Item,
+     * Product Usage Chart, and Audit Report, a valid time window is required;
+     * {@link #loadReport(String, String)} supplies its timestamp parameters.
+     * The X-Report SQL is supplied by {@link XReportQuery#getSql()}.</p>
+     *
+     * <p>If no report is selected, the date range is invalid, or the selected
+     * report is unrecognized, an error dialog is displayed instead.</p>
+     *
+     * <p>The Audit Report groups the four supported transaction statuses
+     * ({@code completed}, {@code voided}, {@code refunded}, and {@code discard})
+     * and uses a left join so categories with no matching orders still appear
+     * with zero totals.</p>
+     */
 	private static void generateReport() {
 
 		String selectedReport = reportBox.getValue();
@@ -305,6 +381,15 @@ default:
 		loadReport(sql, selectedReport);
 	}
 
+    /**
+     * Validates the start and end dates chosen for a time-window report.
+     *
+     * <p>Both dates must be selected, and the start date must not be after
+     * the end date. Any invalid selection displays an explanatory dialog.</p>
+     *
+     * @return {@code true} when both dates are present and ordered correctly;
+     *         {@code false} otherwise
+     */
 	private static boolean validateDates() {
 
 		LocalDate startDate = startDatePicker.getValue();
@@ -323,6 +408,20 @@ default:
 		return true;
 	}
 
+    /**
+     * Executes the selected report query and presents its rows in the table.
+     *
+     * <p>A JDBC {@link PreparedStatement} binds date parameters when required,
+     * using an inclusive start timestamp and an exclusive timestamp at the
+     * beginning of the day after the selected end date. The method uses
+     * {@link ResultSetMetaData} to create table columns dynamically, converts
+     * returned values to strings, and updates the result count/status label.
+     * SQL errors are displayed through {@link #showError(String, String)}.</p>
+     *
+     * @param sql the SQL query for the selected management report
+     * @param reportName the report title used to determine date binding and
+     *                   describe the displayed results
+     */
 	private static void loadReport(String sql, String reportName) {
 
 		ObservableList<ObservableList<String>> rows =
@@ -419,6 +518,12 @@ default:
 		}
 	}
 
+    /**
+     * Resets the reporting screen to its initial state.
+     *
+     * <p>Clears the selected report and results, restores the default 30-day
+     * date range, and replaces the status message with the initial prompt.</p>
+     */
 	private static void clearReport() {
 
 		reportBox.setValue(null);
@@ -432,6 +537,12 @@ default:
 		resultLabel.setText("Select a report to begin.");
 	}
 
+    /**
+     * Displays a modal JavaFX error dialog with the supplied message.
+     *
+     * @param title the title displayed in the error dialog window
+     * @param message the explanation shown to the manager
+     */
 	private static void showError(String title, String message) {
 
 		Alert alert = new Alert(Alert.AlertType.ERROR);

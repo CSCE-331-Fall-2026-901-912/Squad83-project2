@@ -22,8 +22,21 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Main JavaFX application for the Squad 83 point-of-sale system. It starts on
+ * a role selection screen where the user chooses to continue as a manager or
+ * a cashier, and then shows the matching set of views.
+ *
+ * @author Squad 83
+ */
 public class App extends Application {
 
+	/**
+	 * Starts the application by setting the window title and showing the role
+	 * selection screen.
+	 *
+	 * @param primaryStage the primary window of the application
+	 */
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -32,6 +45,12 @@ public class App extends Application {
 		showRoleSelection(primaryStage);
 	}
 
+	/**
+	 * Shows the role selection screen, which displays the application title and
+	 * buttons for choosing the manager or cashier view.
+	 *
+	 * @param primaryStage the window in which the screen is shown
+	 */
 	private void showRoleSelection(Stage primaryStage) {
 
 		Label title = new Label("Squad 83 POS System");
@@ -76,6 +95,13 @@ public class App extends Application {
 		primaryStage.show();
 	}
 
+	/**
+	 * Shows the manager screen, which has tabs for menu items, inventory,
+	 * employees, reports, and seasonal items, along with a button that returns
+	 * to the role selection screen.
+	 *
+	 * @param primaryStage the window in which the screen is shown
+	 */
 	private void showManagerView(Stage primaryStage) {
 
 		BorderPane root = new BorderPane();
@@ -143,6 +169,12 @@ public class App extends Application {
 		primaryStage.setScene(scene);
 	}
 
+	/**
+	 * Shows the cashier screen, which has a single cashier tab along with a
+	 * button that returns to the role selection screen.
+	 *
+	 * @param primaryStage the window in which the screen is shown
+	 */
 	private void showCashierView(Stage primaryStage) {
 
 		BorderPane root = new BorderPane();
@@ -174,6 +206,13 @@ public class App extends Application {
 		primaryStage.setScene(scene);
 	}
 
+	/**
+	 * Creates a simple placeholder screen that shows the given name followed by
+	 * "View" in a centered label.
+	 *
+	 * @param name the name displayed in the placeholder label
+	 * @return the root node of the placeholder screen
+	 */
 	private Parent createPlaceholder(String name) {
 
 		Label label = new Label(name + " View");
@@ -185,6 +224,11 @@ public class App extends Application {
 		return pane;
 	}
 
+	/**
+	 * Launches the JavaFX application.
+	 *
+	 * @param args the command-line arguments passed to the application
+	 */
 	public static void main(String[] args) {
 
 		launch(args);
