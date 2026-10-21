@@ -152,6 +152,8 @@ public class App extends Application {
 				seasonalTab
 		);
 
+		
+
 		Button homeButton = new Button("Back to Home");
 		homeButton.setOnAction(e -> showRoleSelection(primaryStage));
 

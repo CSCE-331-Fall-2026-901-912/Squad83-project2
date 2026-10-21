@@ -28,6 +28,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * Manager view for creating a new seasonal menu item together with its recipe.
+ * <p>
+ * The manager enters the item's name, price, and category, then builds the recipe
+ * by choosing inventory items and the amount of each used per drink. Creating the
+ * item saves it to {@code menu_items} and its recipe to {@code menu_item_ingredients}
+ * in one transaction, so the new drink appears on the cashier menu and deducts
+ * inventory correctly when sold.
+ */
 public class SeasonalItemView {
 
 	private static TextField nameField;
@@ -39,6 +48,11 @@ public class SeasonalItemView {
 	private static TableView<RecipeLine> recipeTable;
 	private static ObservableList<RecipeLine> recipe;
 
+	/**
+	 * Builds the seasonal menu item view and loads its categories and inventory items.
+	 *
+	 * @return the root node of the view, used by App to fill the Seasonal Item tab
+	 */
 	public static Parent getView() {
 
 		BorderPane root = new BorderPane();
@@ -178,6 +192,11 @@ public class SeasonalItemView {
 		return root;
 	}
 
+	/**
+	 * Loads every value of the {@code menu_category} enum into the category drop-down.
+	 * Reading the enum from the database means a newly added category, such as
+	 * Seasonal, appears without changing this code.
+	 */
 	private static void loadCategories() {
 
 		ObservableList<String> categories = FXCollections.observableArrayList();
@@ -201,6 +220,10 @@ public class SeasonalItemView {
 		}
 	}
 
+	/**
+	 * Loads all inventory items, sorted by category and name, into the ingredient
+	 * drop-down used to build the recipe.
+	 */
 	private static void loadInventory() {
 
 		ObservableList<InventoryOption> items = FXCollections.observableArrayList();
@@ -233,6 +256,11 @@ public class SeasonalItemView {
 		}
 	}
 
+	/**
+	 * Adds the selected inventory item and amount to the recipe. If the item is
+	 * already in the recipe, its amount is replaced instead of adding a duplicate line.
+	 * Shows an error if no item is selected or the amount is not a positive number.
+	 */
 	private static void addIngredient() {
 
 		InventoryOption item = ingredientBox.getValue();
@@ -272,6 +300,9 @@ public class SeasonalItemView {
 		clearIngredientInput();
 	}
 
+	/**
+	 * Removes the selected line from the recipe, or shows an error if none is selected.
+	 */
 	private static void removeIngredient() {
 
 		RecipeLine selected = recipeTable.getSelectionModel().getSelectedItem();
@@ -284,6 +315,12 @@ public class SeasonalItemView {
 		recipe.remove(selected);
 	}
 
+	/**
+	 * Validates the form, asks for confirmation, and saves the new menu item and its
+	 * recipe in one transaction. Because {@code menu_item_id} has no auto-increment,
+	 * the menu_items table is locked while the next ID is chosen so two managers
+	 * cannot take the same ID. If any step fails, the whole transaction is rolled back.
+	 */
 	private static void createItem() {
 
 		if (!validateForm()) {
@@ -374,6 +411,13 @@ public class SeasonalItemView {
 		clearForm();
 	}
 
+	/**
+	 * Checks that the name is filled in, the price is a non-negative number, a
+	 * category is selected, and the recipe has at least one ingredient. Shows an
+	 * error describing the first problem found.
+	 *
+	 * @return true if the form is valid, false otherwise
+	 */
 	private static boolean validateForm() {
 
 		if (nameField.getText().trim().isEmpty()) {
@@ -407,12 +451,18 @@ public class SeasonalItemView {
 		return true;
 	}
 
+	/**
+	 * Clears the ingredient drop-down and amount field after an ingredient is added.
+	 */
 	private static void clearIngredientInput() {
 
 		ingredientBox.setValue(null);
 		amountField.clear();
 	}
 
+	/**
+	 * Resets the whole form, including the item details and the recipe.
+	 */
 	private static void clearForm() {
 
 		nameField.clear();
@@ -423,6 +473,12 @@ public class SeasonalItemView {
 		clearIngredientInput();
 	}
 
+	/**
+	 * Shows an error dialog to the user.
+	 *
+	 * @param title the dialog's window title
+	 * @param message the explanation shown in the dialog
+	 */
 	private static void showError(String title, String message) {
 
 		Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -432,6 +488,9 @@ public class SeasonalItemView {
 		alert.showAndWait();
 	}
 
+	/**
+	 * An inventory item shown in the ingredient drop-down.
+	 */
 	public static class InventoryOption {
 
 		private final int id;
@@ -439,6 +498,14 @@ public class SeasonalItemView {
 		private final String category;
 		private final String unit;
 
+		/**
+		 * Creates an inventory option.
+		 *
+		 * @param id the item's inventory_id
+		 * @param name the item's name
+		 * @param category the item's category: ingredient, topping, or supply
+		 * @param unit the item's unit of measure: oz, g, or each
+		 */
 		public InventoryOption(int id, String name, String category, String unit) {
 
 			this.id = id;
@@ -447,29 +514,58 @@ public class SeasonalItemView {
 			this.unit = unit;
 		}
 
+		/**
+		 * Returns the item's inventory_id.
+		 *
+		 * @return the item's inventory_id
+		 */
 		public int getId() {
 			return id;
 		}
 
+		/**
+		 * Returns the item's name.
+		 *
+		 * @return the item's name
+		 */
 		public String getName() {
 			return name;
 		}
 
+		/**
+		 * Returns the item's category.
+		 *
+		 * @return the item's category
+		 */
 		public String getCategory() {
 			return category;
 		}
 
+		/**
+		 * Returns the item's unit of measure.
+		 *
+		 * @return the item's unit of measure
+		 */
 		public String getUnit() {
 			return unit;
 		}
 
 		// shown in the ingredient drop-down
+		/**
+		 * Returns the text shown in the drop-down, the name followed by the category.
+		 *
+		 * @return the text shown in the drop-down, the name followed by the category
+		 */
 		@Override
 		public String toString() {
 			return name + " (" + category + ")";
 		}
 	}
 
+	/**
+	 * One line of the recipe being built: an inventory item and the amount of it
+	 * used per drink.
+	 */
 	public static class RecipeLine {
 
 		private final int inventoryId;
@@ -479,6 +575,12 @@ public class SeasonalItemView {
 		private final SimpleStringProperty category;
 		private final SimpleStringProperty amountText;
 
+		/**
+		 * Creates a recipe line.
+		 *
+		 * @param item the inventory item used
+		 * @param amount the amount used per drink, in the item's unit
+		 */
 		public RecipeLine(InventoryOption item, double amount) {
 
 			this.inventoryId = item.getId();
@@ -489,31 +591,66 @@ public class SeasonalItemView {
 			this.amountText = new SimpleStringProperty(formatAmount());
 		}
 
+		/**
+		 * Formats the amount with its unit for display, without trailing zeros.
+		 *
+		 * @return the amount and unit, for example "1.5 oz"
+		 */
 		private String formatAmount() {
 			return BigDecimal.valueOf(amount).stripTrailingZeros().toPlainString() + " " + unit;
 		}
 
+		/**
+		 * Returns the inventory_id of the item used.
+		 *
+		 * @return the inventory_id of the item used
+		 */
 		public int getInventoryId() {
 			return inventoryId;
 		}
 
+		/**
+		 * Returns the amount used per drink.
+		 *
+		 * @return the amount used per drink
+		 */
 		public double getAmount() {
 			return amount;
 		}
 
+		/**
+		 * Changes the amount used and updates the displayed text.
+		 *
+		 * @param newAmount the new amount used per drink
+		 */
 		public void setAmount(double newAmount) {
 			amount = newAmount;
 			amountText.set(formatAmount());
 		}
 
+		/**
+		 * Returns the item name, bound to the Inventory Item column.
+		 *
+		 * @return the item name, bound to the Inventory Item column
+		 */
 		public SimpleStringProperty nameProperty() {
 			return name;
 		}
 
+		/**
+		 * Returns the item category, bound to the Category column.
+		 *
+		 * @return the item category, bound to the Category column
+		 */
 		public SimpleStringProperty categoryProperty() {
 			return category;
 		}
 
+		/**
+		 * Returns the formatted amount, bound to the Amount column.
+		 *
+		 * @return the formatted amount, bound to the Amount column
+		 */
 		public SimpleStringProperty amountTextProperty() {
 			return amountText;
 		}
