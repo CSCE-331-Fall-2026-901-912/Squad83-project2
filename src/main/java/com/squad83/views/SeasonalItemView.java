@@ -39,13 +39,21 @@ import java.sql.SQLException;
  */
 public class SeasonalItemView {
 
+	/** Name of the new menu item. */
 	private static TextField nameField;
+	/** Price of the new menu item. */
 	private static TextField priceField;
+	/** Category picker, filled from the menu_category enum. */
 	private static ComboBox<String> categoryBox;
+	/** Inventory item picker for building the recipe. */
 	private static ComboBox<InventoryOption> ingredientBox;
+	/** Amount of the selected inventory item used per drink. */
 	private static TextField amountField;
+	/** Shows the unit (oz, g, or each) of the selected inventory item. */
 	private static Label unitLabel;
+	/** Table showing the recipe being built. */
 	private static TableView<RecipeLine> recipeTable;
+	/** The lines of the recipe being built. */
 	private static ObservableList<RecipeLine> recipe;
 
 	/**
@@ -493,9 +501,13 @@ public class SeasonalItemView {
 	 */
 	public static class InventoryOption {
 
+		/** The item's inventory_id. */
 		private final int id;
+		/** The item's name. */
 		private final String name;
+		/** The item's category: ingredient, topping, or supply. */
 		private final String category;
+		/** The item's unit of measure: oz, g, or each. */
 		private final String unit;
 
 		/**
@@ -568,11 +580,17 @@ public class SeasonalItemView {
 	 */
 	public static class RecipeLine {
 
+		/** The inventory_id of the item used. */
 		private final int inventoryId;
+		/** The unit of measure of the item used. */
 		private final String unit;
+		/** The amount used per drink. */
 		private double amount;
+		/** The item's name, shown in the Inventory Item column. */
 		private final SimpleStringProperty name;
+		/** The item's category, shown in the Category column. */
 		private final SimpleStringProperty category;
+		/** The formatted amount and unit, shown in the Amount column. */
 		private final SimpleStringProperty amountText;
 
 		/**

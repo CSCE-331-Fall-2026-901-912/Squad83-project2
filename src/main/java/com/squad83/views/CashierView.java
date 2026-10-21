@@ -48,23 +48,35 @@ import java.util.Map;
  */
 public class CashierView {
 
-	// sales tax rate applied to the subtotal
+	/** Sales tax rate applied to the order subtotal (8.25%). */
 	private static final BigDecimal TAX_RATE = new BigDecimal("0.0825");
 
-	// extra charge for a large drink
+	/** Extra charge added to the base price of a large drink. */
 	private static final BigDecimal LARGE_UPCHARGE = new BigDecimal("0.75");
 
+	/** Holds the menu item buttons, grouped under category headings. */
 	private static VBox menuSections;
+	/** Drink size picker: M or L. */
 	private static ComboBox<String> sizeBox;
+	/** Sugar level picker, from 0% to 100%. */
 	private static ComboBox<String> sugarBox;
+	/** Ice level picker: none, less, or regular. */
 	private static ComboBox<String> iceBox;
+	/** Table showing the lines in the current order. */
 	private static TableView<CartItem> cartTable;
+	/** The lines in the current order. */
 	private static ObservableList<CartItem> cart;
+	/** Picker for the cashier taking the order. */
 	private static ComboBox<EmployeeOption> employeeBox;
+	/** Payment method picker: card, cash, or mobile. */
 	private static ComboBox<String> paymentBox;
+	/** Optional tip amount entered by the cashier. */
 	private static TextField tipField;
+	/** Shows the order subtotal. */
 	private static Label subtotalLabel;
+	/** Shows the sales tax on the order. */
 	private static Label taxLabel;
+	/** Shows the order total, including tax and tip. */
 	private static Label totalLabel;
 
 	/**
@@ -659,8 +671,11 @@ public class CashierView {
 	 */
 	public static class MenuOption {
 
+		/** The item's menu_item_id. */
 		private final int id;
+		/** The item's name. */
 		private final String name;
+		/** The item's medium-size price. */
 		private final BigDecimal basePrice;
 
 		/**
@@ -710,7 +725,9 @@ public class CashierView {
 	 */
 	public static class EmployeeOption {
 
+		/** The employee's employee_id. */
 		private final int id;
+		/** The employee's full name. */
 		private final String name;
 
 		/**
@@ -752,14 +769,23 @@ public class CashierView {
 	 */
 	public static class CartItem {
 
+		/** The drink's menu_item_id. */
 		private final int menuItemId;
+		/** The drink's size, M or L. */
 		private final String size;
+		/** The drink's sugar level. */
 		private final String sugar;
+		/** The drink's ice level. */
 		private final String ice;
+		/** The price of one drink, including any large upcharge. */
 		private final BigDecimal unitPrice;
+		/** The drink's name, shown in the Item column. */
 		private final SimpleStringProperty name;
+		/** The size, sugar, and ice text, shown in the Options column. */
 		private final SimpleStringProperty options;
+		/** The number of this drink in the order, shown in the Qty column. */
 		private final SimpleIntegerProperty quantity;
+		/** The formatted line total, shown in the Total column. */
 		private final SimpleStringProperty lineTotal;
 
 		/**
