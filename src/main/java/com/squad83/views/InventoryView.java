@@ -27,17 +27,42 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * JavaFX view for managing the shop's inventory. It displays all inventory
+ * items in a table along with a status that flags items at or below their
+ * reorder threshold, and provides a form to add, update, restock, clear, and
+ * refresh items stored in the database.
+ *
+ * @author Squad 83
+ */
 public class InventoryView {
 
+	/** Table showing every inventory item. */
 	private static TableView<InventoryItem> table;
+	/** Name of the inventory item. */
 	private static TextField nameField;
+	/** Category picker (ingredient, topping, or supply). */
 	private static ComboBox<String> categoryBox;
+	/** Unit picker (oz, g, or each). */
 	private static ComboBox<String> unitBox;
+	/** Quantity currently on hand. */
 	private static TextField quantityField;
+	/** Quantity at or below which the item needs to be reordered. */
 	private static TextField thresholdField;
+	/** Cost of one unit of the item. */
 	private static TextField costField;
+	/** Amount to add to the selected item when restocking. */
 	private static TextField restockField;
 
+	/**
+	 * Builds the inventory management screen, including the title, the
+	 * inventory table, the input form, the restock row, and the action
+	 * buttons. Selecting a row in the table fills the form with that item's
+	 * values. Inventory items are loaded from the database before the view is
+	 * returned.
+	 *
+	 * @return the root node of the inventory view
+	 */
 	public static Parent getView() {
 
 		BorderPane root = new BorderPane();
@@ -197,6 +222,11 @@ public class InventoryView {
 		return root;
 	}
 
+	/**
+	 * Loads all inventory items from the database, ordered by inventory ID,
+	 * and places them in the table. If a database error occurs, an error
+	 * dialog is shown instead of propagating the exception.
+	 */
 	private static void loadItems() {
 
 		ObservableList<InventoryItem> items = FXCollections.observableArrayList();
@@ -233,6 +263,12 @@ public class InventoryView {
 		}
 	}
 
+	/**
+	 * Validates the form and inserts a new inventory item into the database
+	 * using the values currently entered. The new item's ID is one more than
+	 * the largest existing ID. On success the table is refreshed and the form
+	 * is cleared.
+	 */
 	private static void addItem() {
 
 		if (!validateForm()) {
@@ -267,6 +303,12 @@ public class InventoryView {
 		}
 	}
 
+	/**
+	 * Updates the inventory item selected in the table with the values
+	 * currently in the form. An error is shown if no item is selected or the
+	 * form is invalid. On success the table is refreshed and the form is
+	 * cleared.
+	 */
 	private static void updateItem() {
 
 		InventoryItem selected = table.getSelectionModel().getSelectedItem();
@@ -312,6 +354,12 @@ public class InventoryView {
 		}
 	}
 
+	/**
+	 * Adds the amount entered in the restock field to the quantity on hand of
+	 * the item selected in the table. An error is shown if no item is
+	 * selected or the amount is not a number greater than 0. On success the
+	 * table is refreshed and the form is cleared.
+	 */
 	private static void restockItem() {
 
 		InventoryItem selected = table.getSelectionModel().getSelectedItem();
@@ -358,6 +406,14 @@ public class InventoryView {
 		}
 	}
 
+	/**
+	 * Checks that the form fields hold valid input: the name must not be
+	 * empty, a category and unit must be chosen, and the quantity, reorder
+	 * threshold, and unit cost must be non-negative numbers. An error dialog
+	 * is shown for the first problem found.
+	 *
+	 * @return {@code true} if all form fields are valid, {@code false} otherwise
+	 */
 	private static boolean validateForm() {
 
 		if (nameField.getText().trim().isEmpty()) {
@@ -393,6 +449,12 @@ public class InventoryView {
 		return true;
 	}
 
+	/**
+	 * Checks whether the given text is a number that is 0 or greater.
+	 *
+	 * @param text the text to check
+	 * @return {@code true} if the text is a non-negative number, {@code false} otherwise
+	 */
 	private static boolean isNonNegativeNumber(String text) {
 
 		try {
@@ -403,6 +465,11 @@ public class InventoryView {
 		}
 	}
 
+	/**
+	 * Resets the form to its default state by clearing every text field,
+	 * removing the category and unit selections, and clearing the table
+	 * selection.
+	 */
 	private static void clearForm() {
 
 		nameField.clear();
@@ -416,6 +483,12 @@ public class InventoryView {
 		table.getSelectionModel().clearSelection();
 	}
 
+	/**
+	 * Displays a modal error dialog and waits for the user to close it.
+	 *
+	 * @param title   the title of the dialog window
+	 * @param message the message shown in the dialog body
+	 */
 	private static void showError(String title, String message) {
 
 		Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -425,16 +498,40 @@ public class InventoryView {
 		alert.showAndWait();
 	}
 
+	/**
+	 * Model class representing a single row of the inventory table. Fields
+	 * are stored as JavaFX properties so the table can bind to them.
+	 *
+	 * @author Squad 83
+	 */
 	public static class InventoryItem {
 
+		/** Unique inventory ID. */
 		private final SimpleIntegerProperty id;
+		/** Display name of the item. */
 		private final SimpleStringProperty name;
+		/** Inventory category (ingredient, topping, or supply). */
 		private final SimpleStringProperty category;
+		/** Unit the item is measured in (oz, g, or each). */
 		private final SimpleStringProperty unit;
+		/** Quantity currently on hand. */
 		private final SimpleDoubleProperty quantity;
+		/** Quantity at or below which the item needs to be reordered. */
 		private final SimpleDoubleProperty threshold;
+		/** Cost of one unit of the item. */
 		private final SimpleDoubleProperty cost;
 
+		/**
+		 * Creates an inventory item with the given values.
+		 *
+		 * @param id        the unique inventory ID
+		 * @param name      the display name of the item
+		 * @param category  the inventory category of the item
+		 * @param unit      the unit the item is measured in
+		 * @param quantity  the quantity currently on hand
+		 * @param threshold the quantity at or below which the item needs reordering
+		 * @param cost      the cost of one unit of the item
+		 */
 		public InventoryItem(int id, String name, String category, String unit, double quantity, double threshold, double cost) {
 
 			this.id = new SimpleIntegerProperty(id);
@@ -446,62 +543,138 @@ public class InventoryView {
 			this.cost = new SimpleDoubleProperty(cost);
 		}
 
+		/**
+		 * Gets the inventory ID.
+		 *
+		 * @return the inventory ID
+		 */
 		public int getId() {
 			return id.get();
 		}
 
+		/**
+		 * Gets the ID property for table binding.
+		 *
+		 * @return the ID property
+		 */
 		public SimpleIntegerProperty idProperty() {
 			return id;
 		}
 
+		/**
+		 * Gets the item name.
+		 *
+		 * @return the item name
+		 */
 		public String getName() {
 			return name.get();
 		}
 
+		/**
+		 * Gets the name property for table binding.
+		 *
+		 * @return the name property
+		 */
 		public SimpleStringProperty nameProperty() {
 			return name;
 		}
 
+		/**
+		 * Gets the item category.
+		 *
+		 * @return the item category
+		 */
 		public String getCategory() {
 			return category.get();
 		}
 
+		/**
+		 * Gets the category property for table binding.
+		 *
+		 * @return the category property
+		 */
 		public SimpleStringProperty categoryProperty() {
 			return category;
 		}
 
+		/**
+		 * Gets the unit the item is measured in.
+		 *
+		 * @return the item unit
+		 */
 		public String getUnit() {
 			return unit.get();
 		}
 
+		/**
+		 * Gets the unit property for table binding.
+		 *
+		 * @return the unit property
+		 */
 		public SimpleStringProperty unitProperty() {
 			return unit;
 		}
 
+		/**
+		 * Gets the quantity currently on hand.
+		 *
+		 * @return the quantity on hand
+		 */
 		public double getQuantity() {
 			return quantity.get();
 		}
 
+		/**
+		 * Gets the quantity property for table binding.
+		 *
+		 * @return the quantity property
+		 */
 		public SimpleDoubleProperty quantityProperty() {
 			return quantity;
 		}
 
+		/**
+		 * Gets the reorder threshold.
+		 *
+		 * @return the quantity at or below which the item needs reordering
+		 */
 		public double getThreshold() {
 			return threshold.get();
 		}
 
+		/**
+		 * Gets the threshold property for table binding.
+		 *
+		 * @return the threshold property
+		 */
 		public SimpleDoubleProperty thresholdProperty() {
 			return threshold;
 		}
 
+		/**
+		 * Gets the cost of one unit of the item.
+		 *
+		 * @return the unit cost
+		 */
 		public double getCost() {
 			return cost.get();
 		}
 
+		/**
+		 * Gets the cost property for table binding.
+		 *
+		 * @return the cost property
+		 */
 		public SimpleDoubleProperty costProperty() {
 			return cost;
 		}
 
+		/**
+		 * Gets the stock status shown in the table's Status column.
+		 *
+		 * @return {@code "Reorder"} if the quantity on hand is at or below the
+		 *         reorder threshold, {@code "OK"} otherwise
+		 */
 		public String getStatus() {
 			if (getQuantity() <= getThreshold()) {
 				return "Reorder";
