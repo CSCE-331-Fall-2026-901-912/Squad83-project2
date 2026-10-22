@@ -104,6 +104,13 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">SeasonalItemView</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Manager view for creating a new seasonal menu item together with its recipe.
+<p>
+The manager enters the item's name, price, and category, then builds the recipe
+by choosing inventory items and the amount of each used per drink. Creating the
+item saves it to <code>menu_items</code> and its recipe to <code>menu_item_ingredients</code>
+in one transaction, so the new drink appears on the cashier menu and deducts
+inventory correctly when sold.</div>
 </div>
 </section>
 <section class="summary">
@@ -119,10 +126,15 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="SeasonalItemView.InventoryOption.html" class="type-name-link" title="class in com.squad83.views">SeasonalItemView.InventoryOption</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">An inventory item shown in the ingredient drop-down.</div>
+</div>
 <div class="col-first odd-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second odd-row-color"><code><a href="SeasonalItemView.RecipeLine.html" class="type-name-link" title="class in com.squad83.views">SeasonalItemView.RecipeLine</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">One line of the recipe being built: an inventory item and the amount of it
+used per drink.</div>
+</div>
 </div>
 </section>
 </li>
@@ -137,28 +149,44 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.TextField</code></div>
 <div class="col-second even-row-color"><code><a href="#amountField" class="member-name-link">amountField</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Amount of the selected inventory item used per drink.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.ComboBox<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#categoryBox" class="member-name-link">categoryBox</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Category picker, filled from the menu_category enum.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.ComboBox<wbr>&lt;<a href="SeasonalItemView.InventoryOption.html" title="class in com.squad83.views">SeasonalItemView.InventoryOption</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#ingredientBox" class="member-name-link">ingredientBox</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Inventory item picker for building the recipe.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.TextField</code></div>
 <div class="col-second odd-row-color"><code><a href="#nameField" class="member-name-link">nameField</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Name of the new menu item.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.TextField</code></div>
 <div class="col-second even-row-color"><code><a href="#priceField" class="member-name-link">priceField</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Price of the new menu item.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.collections.ObservableList<wbr>&lt;<a href="SeasonalItemView.RecipeLine.html" title="class in com.squad83.views">SeasonalItemView.RecipeLine</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#recipe" class="member-name-link">recipe</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The lines of the recipe being built.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.TableView<wbr>&lt;<a href="SeasonalItemView.RecipeLine.html" title="class in com.squad83.views">SeasonalItemView.RecipeLine</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#recipeTable" class="member-name-link">recipeTable</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Table showing the recipe being built.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.Label</code></div>
 <div class="col-second odd-row-color"><code><a href="#unitLabel" class="member-name-link">unitLabel</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Shows the unit (oz, g, or each) of the selected inventory item.</div>
+</div>
 </div>
 </section>
 </li>
@@ -188,35 +216,58 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#addIngredient()" class="member-name-link">addIngredient</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Adds the selected inventory item and amount to the recipe.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#clearForm()" class="member-name-link">clearForm</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Resets the whole form, including the item details and the recipe.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#clearIngredientInput()" class="member-name-link">clearIngredientInput</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Clears the ingredient drop-down and amount field after an ingredient is added.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#createItem()" class="member-name-link">createItem</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Validates the form, asks for confirmation, and saves the new menu item and its
+recipe in one transaction.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static javafx.scene.Parent</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getView()" class="member-name-link">getView</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Builds the seasonal menu item view and loads its categories and inventory items.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadCategories()" class="member-name-link">loadCategories</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Loads every value of the <code>menu_category</code> enum into the category drop-down.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadInventory()" class="member-name-link">loadInventory</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Loads all inventory items, sorted by category and name, into the ingredient
+drop-down used to build the recipe.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#removeIngredient()" class="member-name-link">removeIngredient</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Removes the selected line from the recipe, or shows an error if none is selected.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#showError(java.lang.String,java.lang.String)" class="member-name-link">showError</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Shows an error dialog to the user.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#validateForm()" class="member-name-link">validateForm</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Checks that the name is filled in, the price is a non-negative number, a
+category is selected, and the recipe has at least one ingredient.</div>
+</div>
 </div>
 </div>
 </div>
@@ -239,6 +290,7 @@ loadScripts(document, 'script');</script>
 <h3>nameField</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TextField</span>&nbsp;<span class="element-name">nameField</span></div>
+<div class="block">Name of the new menu item.</div>
 </div>
 </section>
 </li>
@@ -247,6 +299,7 @@ loadScripts(document, 'script');</script>
 <h3>priceField</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TextField</span>&nbsp;<span class="element-name">priceField</span></div>
+<div class="block">Price of the new menu item.</div>
 </div>
 </section>
 </li>
@@ -255,6 +308,7 @@ loadScripts(document, 'script');</script>
 <h3>categoryBox</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.ComboBox&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">categoryBox</span></div>
+<div class="block">Category picker, filled from the menu_category enum.</div>
 </div>
 </section>
 </li>
@@ -263,6 +317,7 @@ loadScripts(document, 'script');</script>
 <h3>ingredientBox</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.ComboBox&lt;<a href="SeasonalItemView.InventoryOption.html" title="class in com.squad83.views">SeasonalItemView.InventoryOption</a>&gt;</span>&nbsp;<span class="element-name">ingredientBox</span></div>
+<div class="block">Inventory item picker for building the recipe.</div>
 </div>
 </section>
 </li>
@@ -271,6 +326,7 @@ loadScripts(document, 'script');</script>
 <h3>amountField</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TextField</span>&nbsp;<span class="element-name">amountField</span></div>
+<div class="block">Amount of the selected inventory item used per drink.</div>
 </div>
 </section>
 </li>
@@ -279,6 +335,7 @@ loadScripts(document, 'script');</script>
 <h3>unitLabel</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.Label</span>&nbsp;<span class="element-name">unitLabel</span></div>
+<div class="block">Shows the unit (oz, g, or each) of the selected inventory item.</div>
 </div>
 </section>
 </li>
@@ -287,6 +344,7 @@ loadScripts(document, 'script');</script>
 <h3>recipeTable</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TableView&lt;<a href="SeasonalItemView.RecipeLine.html" title="class in com.squad83.views">SeasonalItemView.RecipeLine</a>&gt;</span>&nbsp;<span class="element-name">recipeTable</span></div>
+<div class="block">Table showing the recipe being built.</div>
 </div>
 </section>
 </li>
@@ -295,6 +353,7 @@ loadScripts(document, 'script');</script>
 <h3>recipe</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.collections.ObservableList&lt;<a href="SeasonalItemView.RecipeLine.html" title="class in com.squad83.views">SeasonalItemView.RecipeLine</a>&gt;</span>&nbsp;<span class="element-name">recipe</span></div>
+<div class="block">The lines of the recipe being built.</div>
 </div>
 </section>
 </li>
@@ -327,6 +386,11 @@ loadScripts(document, 'script');</script>
 <h3>getView</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">javafx.scene.Parent</span>&nbsp;<span class="element-name">getView</span>()</div>
+<div class="block">Builds the seasonal menu item view and loads its categories and inventory items.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the root node of the view, used by App to fill the Seasonal Item tab</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -335,6 +399,9 @@ loadScripts(document, 'script');</script>
 <h3>loadCategories</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadCategories</span>()</div>
+<div class="block">Loads every value of the <code>menu_category</code> enum into the category drop-down.
+Reading the enum from the database means a newly added category, such as
+Seasonal, appears without changing this code.</div>
 </div>
 </section>
 </li>
@@ -343,6 +410,8 @@ loadScripts(document, 'script');</script>
 <h3>loadInventory</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadInventory</span>()</div>
+<div class="block">Loads all inventory items, sorted by category and name, into the ingredient
+drop-down used to build the recipe.</div>
 </div>
 </section>
 </li>
@@ -351,6 +420,9 @@ loadScripts(document, 'script');</script>
 <h3>addIngredient</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addIngredient</span>()</div>
+<div class="block">Adds the selected inventory item and amount to the recipe. If the item is
+already in the recipe, its amount is replaced instead of adding a duplicate line.
+Shows an error if no item is selected or the amount is not a positive number.</div>
 </div>
 </section>
 </li>
@@ -359,6 +431,7 @@ loadScripts(document, 'script');</script>
 <h3>removeIngredient</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">removeIngredient</span>()</div>
+<div class="block">Removes the selected line from the recipe, or shows an error if none is selected.</div>
 </div>
 </section>
 </li>
@@ -367,6 +440,10 @@ loadScripts(document, 'script');</script>
 <h3>createItem</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">createItem</span>()</div>
+<div class="block">Validates the form, asks for confirmation, and saves the new menu item and its
+recipe in one transaction. Because <code>menu_item_id</code> has no auto-increment,
+the menu_items table is locked while the next ID is chosen so two managers
+cannot take the same ID. If any step fails, the whole transaction is rolled back.</div>
 </div>
 </section>
 </li>
@@ -375,6 +452,13 @@ loadScripts(document, 'script');</script>
 <h3>validateForm</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">validateForm</span>()</div>
+<div class="block">Checks that the name is filled in, the price is a non-negative number, a
+category is selected, and the recipe has at least one ingredient. Shows an
+error describing the first problem found.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true if the form is valid, false otherwise</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -383,6 +467,7 @@ loadScripts(document, 'script');</script>
 <h3>clearIngredientInput</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clearIngredientInput</span>()</div>
+<div class="block">Clears the ingredient drop-down and amount field after an ingredient is added.</div>
 </div>
 </section>
 </li>
@@ -391,6 +476,7 @@ loadScripts(document, 'script');</script>
 <h3>clearForm</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clearForm</span>()</div>
+<div class="block">Resets the whole form, including the item details and the recipe.</div>
 </div>
 </section>
 </li>
@@ -400,6 +486,12 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">showError</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
+<div class="block">Shows an error dialog to the user.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>title</code> - the dialog's window title</dd>
+<dd><code>message</code> - the explanation shown in the dialog</dd>
+</dl>
 </div>
 </section>
 </li>

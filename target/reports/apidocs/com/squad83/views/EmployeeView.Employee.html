@@ -123,6 +123,12 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="modifiers">public static class </span><span class="element-name type-name-label">EmployeeView.Employee</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Model class representing a single row of the employees table. Most
+fields are stored as JavaFX properties so the table can bind to them.</div>
+<dl class="notes">
+<dt>Author:</dt>
+<dd>Squad 83</dd>
+</dl>
 </div>
 </section>
 <section class="summary">
@@ -138,22 +144,34 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#firstNameProperty" class="member-name-link">firstName</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Gets the first name property for table binding.</div>
+</div>
 <div class="col-first odd-row-color"><code>javafx.beans.property.SimpleIntegerProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#idProperty" class="member-name-link">id</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Gets the ID property for table binding.</div>
+</div>
 <div class="col-first even-row-color"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#lastNameProperty" class="member-name-link">lastName</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Gets the last name property for table binding.</div>
+</div>
 <div class="col-first odd-row-color"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#pinProperty" class="member-name-link">pin</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Gets the PIN property for table binding.</div>
+</div>
 <div class="col-first even-row-color"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#roleProperty" class="member-name-link">role</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Gets the role property for table binding.</div>
+</div>
 <div class="col-first odd-row-color"><code>javafx.beans.property.SimpleDoubleProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#wageProperty" class="member-name-link">wage</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Gets the wage property for table binding.</div>
+</div>
 </div>
 </section>
 </li>
@@ -209,7 +227,9 @@ loadScripts(document, 'script');</script>
  double&nbsp;wage,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;hireDate,
  boolean&nbsp;active)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates an employee with the given values.</div>
+</div>
 </div>
 </section>
 </li>
@@ -226,58 +246,74 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#firstNameProperty()" class="member-name-link">firstNameProperty</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the first name property for table binding.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFirstName()" class="member-name-link">getFirstName</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>firstName</code> property.</div>
+<div class="block">Gets the first name of the employee.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getHireDate()" class="member-name-link">getHireDate</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the hire date of the employee.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getId()" class="member-name-link">getId</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>id</code> property.</div>
+<div class="block">Gets the employee ID.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLastName()" class="member-name-link">getLastName</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>lastName</code> property.</div>
+<div class="block">Gets the last name of the employee.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPin()" class="member-name-link">getPin</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>pin</code> property.</div>
+<div class="block">Gets the PIN of the employee.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRole()" class="member-name-link">getRole</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>role</code> property.</div>
+<div class="block">Gets the role of the employee.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStatus()" class="member-name-link">getStatus</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the employment status of the employee as display text.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWage()" class="member-name-link">getWage</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>wage</code> property.</div>
+<div class="block">Gets the hourly wage of the employee.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleIntegerProperty</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#idProperty()" class="member-name-link">idProperty</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the ID property for table binding.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#lastNameProperty()" class="member-name-link">lastNameProperty</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the last name property for table binding.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#pinProperty()" class="member-name-link">pinProperty</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the PIN property for table binding.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#roleProperty()" class="member-name-link">roleProperty</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the role property for table binding.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleDoubleProperty</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#wageProperty()" class="member-name-link">wageProperty</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the wage property for table binding.</div>
+</div>
 </div>
 </div>
 </div>
@@ -300,6 +336,7 @@ loadScripts(document, 'script');</script>
 <h3>id</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleIntegerProperty</span>&nbsp;<span class="element-name">idProperty</span></div>
+<div class="block">Gets the ID property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -317,6 +354,7 @@ loadScripts(document, 'script');</script>
 <h3>firstName</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">firstNameProperty</span></div>
+<div class="block">Gets the first name property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -334,6 +372,7 @@ loadScripts(document, 'script');</script>
 <h3>lastName</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">lastNameProperty</span></div>
+<div class="block">Gets the last name property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -351,6 +390,7 @@ loadScripts(document, 'script');</script>
 <h3>role</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">roleProperty</span></div>
+<div class="block">Gets the role property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -368,6 +408,7 @@ loadScripts(document, 'script');</script>
 <h3>pin</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">pinProperty</span></div>
+<div class="block">Gets the PIN property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -385,6 +426,7 @@ loadScripts(document, 'script');</script>
 <h3>wage</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleDoubleProperty</span>&nbsp;<span class="element-name">wageProperty</span></div>
+<div class="block">Gets the wage property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -489,6 +531,18 @@ loadScripts(document, 'script');</script>
  double&nbsp;wage,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&nbsp;hireDate,
  boolean&nbsp;active)</span></div>
+<div class="block">Creates an employee with the given values.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - the unique employee ID</dd>
+<dd><code>firstName</code> - the first name of the employee</dd>
+<dd><code>lastName</code> - the last name of the employee</dd>
+<dd><code>role</code> - the role of the employee, such as manager or cashier</dd>
+<dd><code>pin</code> - the 4-digit PIN of the employee, as text</dd>
+<dd><code>wage</code> - the hourly wage of the employee</dd>
+<dd><code>hireDate</code> - the date the employee was hired</dd>
+<dd><code>active</code> - whether the employee is currently active</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -505,17 +559,10 @@ loadScripts(document, 'script');</script>
 <h3>getId</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getId</span>()</div>
-<div class="block">Gets the value of the <code>id</code> property.</div>
+<div class="block">Gets the employee ID.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>id</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#idProperty()"><code>idProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the employee ID</dd>
 </dl>
 </div>
 </section>
@@ -525,9 +572,10 @@ loadScripts(document, 'script');</script>
 <h3>idProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleIntegerProperty</span>&nbsp;<span class="element-name">idProperty</span>()</div>
+<div class="block">Gets the ID property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>id</code> property</dd>
+<dd>the ID property</dd>
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
@@ -543,17 +591,10 @@ loadScripts(document, 'script');</script>
 <h3>getFirstName</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getFirstName</span>()</div>
-<div class="block">Gets the value of the <code>firstName</code> property.</div>
+<div class="block">Gets the first name of the employee.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>firstName</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#firstNameProperty()"><code>firstNameProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the first name</dd>
 </dl>
 </div>
 </section>
@@ -563,9 +604,10 @@ loadScripts(document, 'script');</script>
 <h3>firstNameProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">firstNameProperty</span>()</div>
+<div class="block">Gets the first name property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>firstName</code> property</dd>
+<dd>the first name property</dd>
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
@@ -581,17 +623,10 @@ loadScripts(document, 'script');</script>
 <h3>getLastName</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getLastName</span>()</div>
-<div class="block">Gets the value of the <code>lastName</code> property.</div>
+<div class="block">Gets the last name of the employee.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>lastName</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#lastNameProperty()"><code>lastNameProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the last name</dd>
 </dl>
 </div>
 </section>
@@ -601,9 +636,10 @@ loadScripts(document, 'script');</script>
 <h3>lastNameProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">lastNameProperty</span>()</div>
+<div class="block">Gets the last name property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>lastName</code> property</dd>
+<dd>the last name property</dd>
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
@@ -619,17 +655,10 @@ loadScripts(document, 'script');</script>
 <h3>getRole</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getRole</span>()</div>
-<div class="block">Gets the value of the <code>role</code> property.</div>
+<div class="block">Gets the role of the employee.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>role</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#roleProperty()"><code>roleProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the role</dd>
 </dl>
 </div>
 </section>
@@ -639,9 +668,10 @@ loadScripts(document, 'script');</script>
 <h3>roleProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">roleProperty</span>()</div>
+<div class="block">Gets the role property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>role</code> property</dd>
+<dd>the role property</dd>
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
@@ -657,17 +687,10 @@ loadScripts(document, 'script');</script>
 <h3>getPin</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getPin</span>()</div>
-<div class="block">Gets the value of the <code>pin</code> property.</div>
+<div class="block">Gets the PIN of the employee.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>pin</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#pinProperty()"><code>pinProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the PIN, as text</dd>
 </dl>
 </div>
 </section>
@@ -677,9 +700,10 @@ loadScripts(document, 'script');</script>
 <h3>pinProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">pinProperty</span>()</div>
+<div class="block">Gets the PIN property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>pin</code> property</dd>
+<dd>the PIN property</dd>
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
@@ -695,17 +719,10 @@ loadScripts(document, 'script');</script>
 <h3>getWage</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getWage</span>()</div>
-<div class="block">Gets the value of the <code>wage</code> property.</div>
+<div class="block">Gets the hourly wage of the employee.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>wage</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#wageProperty()"><code>wageProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the hourly wage</dd>
 </dl>
 </div>
 </section>
@@ -715,9 +732,10 @@ loadScripts(document, 'script');</script>
 <h3>wageProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleDoubleProperty</span>&nbsp;<span class="element-name">wageProperty</span>()</div>
+<div class="block">Gets the wage property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>wage</code> property</dd>
+<dd>the wage property</dd>
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
@@ -733,6 +751,11 @@ loadScripts(document, 'script');</script>
 <h3>getHireDate</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a></span>&nbsp;<span class="element-name">getHireDate</span>()</div>
+<div class="block">Gets the hire date of the employee.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the hire date</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -741,6 +764,12 @@ loadScripts(document, 'script');</script>
 <h3>getStatus</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getStatus</span>()</div>
+<div class="block">Gets the employment status of the employee as display text.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>"Active"</code> if the employee is active, <code>"Inactive"</code>
+        otherwise</dd>
+</dl>
 </div>
 </section>
 </li>

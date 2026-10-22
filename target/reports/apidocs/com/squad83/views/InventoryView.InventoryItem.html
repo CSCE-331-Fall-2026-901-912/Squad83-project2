@@ -124,6 +124,12 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="modifiers">public static class </span><span class="element-name type-name-label">InventoryView.InventoryItem</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Model class representing a single row of the inventory table. Fields
+are stored as JavaFX properties so the table can bind to them.</div>
+<dl class="notes">
+<dt>Author:</dt>
+<dd>Squad 83</dd>
+</dl>
 </div>
 </section>
 <section class="summary">
@@ -139,25 +145,39 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#categoryProperty" class="member-name-link">category</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Gets the category property for table binding.</div>
+</div>
 <div class="col-first odd-row-color"><code>javafx.beans.property.SimpleDoubleProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#costProperty" class="member-name-link">cost</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Gets the cost property for table binding.</div>
+</div>
 <div class="col-first even-row-color"><code>javafx.beans.property.SimpleIntegerProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#idProperty" class="member-name-link">id</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Gets the ID property for table binding.</div>
+</div>
 <div class="col-first odd-row-color"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#nameProperty" class="member-name-link">name</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Gets the name property for table binding.</div>
+</div>
 <div class="col-first even-row-color"><code>javafx.beans.property.SimpleDoubleProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#quantityProperty" class="member-name-link">quantity</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Gets the quantity property for table binding.</div>
+</div>
 <div class="col-first odd-row-color"><code>javafx.beans.property.SimpleDoubleProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#thresholdProperty" class="member-name-link">threshold</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Gets the threshold property for table binding.</div>
+</div>
 <div class="col-first even-row-color"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#unitProperty" class="member-name-link">unit</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Gets the unit property for table binding.</div>
+</div>
 </div>
 </section>
 </li>
@@ -172,25 +192,39 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>private final javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#category" class="member-name-link">category</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Inventory category (ingredient, topping, or supply).</div>
+</div>
 <div class="col-first odd-row-color"><code>private final javafx.beans.property.SimpleDoubleProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#cost" class="member-name-link">cost</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Cost of one unit of the item.</div>
+</div>
 <div class="col-first even-row-color"><code>private final javafx.beans.property.SimpleIntegerProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#id" class="member-name-link">id</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Unique inventory ID.</div>
+</div>
 <div class="col-first odd-row-color"><code>private final javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#name" class="member-name-link">name</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Display name of the item.</div>
+</div>
 <div class="col-first even-row-color"><code>private final javafx.beans.property.SimpleDoubleProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#quantity" class="member-name-link">quantity</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Quantity currently on hand.</div>
+</div>
 <div class="col-first odd-row-color"><code>private final javafx.beans.property.SimpleDoubleProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#threshold" class="member-name-link">threshold</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Quantity at or below which the item needs to be reordered.</div>
+</div>
 <div class="col-first even-row-color"><code>private final javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#unit" class="member-name-link">unit</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Unit the item is measured in (oz, g, or each).</div>
+</div>
 </div>
 </section>
 </li>
@@ -209,7 +243,9 @@ loadScripts(document, 'script');</script>
  double&nbsp;quantity,
  double&nbsp;threshold,
  double&nbsp;cost)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates an inventory item with the given values.</div>
+</div>
 </div>
 </section>
 </li>
@@ -226,63 +262,79 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#categoryProperty()" class="member-name-link">categoryProperty</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the category property for table binding.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleDoubleProperty</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#costProperty()" class="member-name-link">costProperty</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the cost property for table binding.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCategory()" class="member-name-link">getCategory</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>category</code> property.</div>
+<div class="block">Gets the item category.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getCost()" class="member-name-link">getCost</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>cost</code> property.</div>
+<div class="block">Gets the cost of one unit of the item.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getId()" class="member-name-link">getId</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>id</code> property.</div>
+<div class="block">Gets the inventory ID.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getName()" class="member-name-link">getName</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>name</code> property.</div>
+<div class="block">Gets the item name.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getQuantity()" class="member-name-link">getQuantity</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>quantity</code> property.</div>
+<div class="block">Gets the quantity currently on hand.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getStatus()" class="member-name-link">getStatus</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the stock status shown in the table's Status column.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getThreshold()" class="member-name-link">getThreshold</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>threshold</code> property.</div>
+<div class="block">Gets the reorder threshold.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getUnit()" class="member-name-link">getUnit</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Gets the value of the <code>unit</code> property.</div>
+<div class="block">Gets the unit the item is measured in.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleIntegerProperty</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#idProperty()" class="member-name-link">idProperty</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the ID property for table binding.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#nameProperty()" class="member-name-link">nameProperty</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the name property for table binding.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleDoubleProperty</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#quantityProperty()" class="member-name-link">quantityProperty</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the quantity property for table binding.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleDoubleProperty</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#thresholdProperty()" class="member-name-link">thresholdProperty</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the threshold property for table binding.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#unitProperty()" class="member-name-link">unitProperty</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Gets the unit property for table binding.</div>
+</div>
 </div>
 </div>
 </div>
@@ -305,11 +357,11 @@ loadScripts(document, 'script');</script>
 <h3>id</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleIntegerProperty</span>&nbsp;<span class="element-name">idProperty</span></div>
+<div class="block">Gets the ID property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
-<li><a href="#getId()"><code>getId()</code></a></li>
 <li><a href="#idProperty()"><code>idProperty()</code></a></li>
 </ul>
 </dd>
@@ -322,11 +374,11 @@ loadScripts(document, 'script');</script>
 <h3>name</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">nameProperty</span></div>
+<div class="block">Gets the name property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
-<li><a href="#getName()"><code>getName()</code></a></li>
 <li><a href="#nameProperty()"><code>nameProperty()</code></a></li>
 </ul>
 </dd>
@@ -339,11 +391,11 @@ loadScripts(document, 'script');</script>
 <h3>category</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">categoryProperty</span></div>
+<div class="block">Gets the category property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
-<li><a href="#getCategory()"><code>getCategory()</code></a></li>
 <li><a href="#categoryProperty()"><code>categoryProperty()</code></a></li>
 </ul>
 </dd>
@@ -356,11 +408,11 @@ loadScripts(document, 'script');</script>
 <h3>unit</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">unitProperty</span></div>
+<div class="block">Gets the unit property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
-<li><a href="#getUnit()"><code>getUnit()</code></a></li>
 <li><a href="#unitProperty()"><code>unitProperty()</code></a></li>
 </ul>
 </dd>
@@ -373,11 +425,11 @@ loadScripts(document, 'script');</script>
 <h3>quantity</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleDoubleProperty</span>&nbsp;<span class="element-name">quantityProperty</span></div>
+<div class="block">Gets the quantity property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
-<li><a href="#getQuantity()"><code>getQuantity()</code></a></li>
 <li><a href="#quantityProperty()"><code>quantityProperty()</code></a></li>
 </ul>
 </dd>
@@ -390,11 +442,11 @@ loadScripts(document, 'script');</script>
 <h3>threshold</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleDoubleProperty</span>&nbsp;<span class="element-name">thresholdProperty</span></div>
+<div class="block">Gets the threshold property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
-<li><a href="#getThreshold()"><code>getThreshold()</code></a></li>
 <li><a href="#thresholdProperty()"><code>thresholdProperty()</code></a></li>
 </ul>
 </dd>
@@ -407,11 +459,11 @@ loadScripts(document, 'script');</script>
 <h3>cost</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleDoubleProperty</span>&nbsp;<span class="element-name">costProperty</span></div>
+<div class="block">Gets the cost property for table binding.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="tag-list">
-<li><a href="#getCost()"><code>getCost()</code></a></li>
 <li><a href="#costProperty()"><code>costProperty()</code></a></li>
 </ul>
 </dd>
@@ -432,6 +484,7 @@ loadScripts(document, 'script');</script>
 <h3>id</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleIntegerProperty</span>&nbsp;<span class="element-name">id</span></div>
+<div class="block">Unique inventory ID.</div>
 </div>
 </section>
 </li>
@@ -440,6 +493,7 @@ loadScripts(document, 'script');</script>
 <h3>name</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">name</span></div>
+<div class="block">Display name of the item.</div>
 </div>
 </section>
 </li>
@@ -448,6 +502,7 @@ loadScripts(document, 'script');</script>
 <h3>category</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">category</span></div>
+<div class="block">Inventory category (ingredient, topping, or supply).</div>
 </div>
 </section>
 </li>
@@ -456,6 +511,7 @@ loadScripts(document, 'script');</script>
 <h3>unit</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">unit</span></div>
+<div class="block">Unit the item is measured in (oz, g, or each).</div>
 </div>
 </section>
 </li>
@@ -464,6 +520,7 @@ loadScripts(document, 'script');</script>
 <h3>quantity</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleDoubleProperty</span>&nbsp;<span class="element-name">quantity</span></div>
+<div class="block">Quantity currently on hand.</div>
 </div>
 </section>
 </li>
@@ -472,6 +529,7 @@ loadScripts(document, 'script');</script>
 <h3>threshold</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleDoubleProperty</span>&nbsp;<span class="element-name">threshold</span></div>
+<div class="block">Quantity at or below which the item needs to be reordered.</div>
 </div>
 </section>
 </li>
@@ -480,6 +538,7 @@ loadScripts(document, 'script');</script>
 <h3>cost</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleDoubleProperty</span>&nbsp;<span class="element-name">cost</span></div>
+<div class="block">Cost of one unit of the item.</div>
 </div>
 </section>
 </li>
@@ -502,6 +561,17 @@ loadScripts(document, 'script');</script>
  double&nbsp;quantity,
  double&nbsp;threshold,
  double&nbsp;cost)</span></div>
+<div class="block">Creates an inventory item with the given values.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>id</code> - the unique inventory ID</dd>
+<dd><code>name</code> - the display name of the item</dd>
+<dd><code>category</code> - the inventory category of the item</dd>
+<dd><code>unit</code> - the unit the item is measured in</dd>
+<dd><code>quantity</code> - the quantity currently on hand</dd>
+<dd><code>threshold</code> - the quantity at or below which the item needs reordering</dd>
+<dd><code>cost</code> - the cost of one unit of the item</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -518,17 +588,10 @@ loadScripts(document, 'script');</script>
 <h3>getId</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getId</span>()</div>
-<div class="block">Gets the value of the <code>id</code> property.</div>
+<div class="block">Gets the inventory ID.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>id</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#idProperty()"><code>idProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the inventory ID</dd>
 </dl>
 </div>
 </section>
@@ -538,15 +601,10 @@ loadScripts(document, 'script');</script>
 <h3>idProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleIntegerProperty</span>&nbsp;<span class="element-name">idProperty</span>()</div>
+<div class="block">Gets the ID property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>id</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#getId()"><code>getId()</code></a></li>
-</ul>
-</dd>
+<dd>the ID property</dd>
 </dl>
 </div>
 </section>
@@ -556,17 +614,10 @@ loadScripts(document, 'script');</script>
 <h3>getName</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getName</span>()</div>
-<div class="block">Gets the value of the <code>name</code> property.</div>
+<div class="block">Gets the item name.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>name</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#nameProperty()"><code>nameProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the item name</dd>
 </dl>
 </div>
 </section>
@@ -576,15 +627,10 @@ loadScripts(document, 'script');</script>
 <h3>nameProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">nameProperty</span>()</div>
+<div class="block">Gets the name property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>name</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#getName()"><code>getName()</code></a></li>
-</ul>
-</dd>
+<dd>the name property</dd>
 </dl>
 </div>
 </section>
@@ -594,17 +640,10 @@ loadScripts(document, 'script');</script>
 <h3>getCategory</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getCategory</span>()</div>
-<div class="block">Gets the value of the <code>category</code> property.</div>
+<div class="block">Gets the item category.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>category</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#categoryProperty()"><code>categoryProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the item category</dd>
 </dl>
 </div>
 </section>
@@ -614,15 +653,10 @@ loadScripts(document, 'script');</script>
 <h3>categoryProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">categoryProperty</span>()</div>
+<div class="block">Gets the category property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>category</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#getCategory()"><code>getCategory()</code></a></li>
-</ul>
-</dd>
+<dd>the category property</dd>
 </dl>
 </div>
 </section>
@@ -632,17 +666,10 @@ loadScripts(document, 'script');</script>
 <h3>getUnit</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getUnit</span>()</div>
-<div class="block">Gets the value of the <code>unit</code> property.</div>
+<div class="block">Gets the unit the item is measured in.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>unit</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#unitProperty()"><code>unitProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the item unit</dd>
 </dl>
 </div>
 </section>
@@ -652,15 +679,10 @@ loadScripts(document, 'script');</script>
 <h3>unitProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">unitProperty</span>()</div>
+<div class="block">Gets the unit property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>unit</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#getUnit()"><code>getUnit()</code></a></li>
-</ul>
-</dd>
+<dd>the unit property</dd>
 </dl>
 </div>
 </section>
@@ -670,17 +692,10 @@ loadScripts(document, 'script');</script>
 <h3>getQuantity</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getQuantity</span>()</div>
-<div class="block">Gets the value of the <code>quantity</code> property.</div>
+<div class="block">Gets the quantity currently on hand.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>quantity</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#quantityProperty()"><code>quantityProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the quantity on hand</dd>
 </dl>
 </div>
 </section>
@@ -690,15 +705,10 @@ loadScripts(document, 'script');</script>
 <h3>quantityProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleDoubleProperty</span>&nbsp;<span class="element-name">quantityProperty</span>()</div>
+<div class="block">Gets the quantity property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>quantity</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#getQuantity()"><code>getQuantity()</code></a></li>
-</ul>
-</dd>
+<dd>the quantity property</dd>
 </dl>
 </div>
 </section>
@@ -708,17 +718,10 @@ loadScripts(document, 'script');</script>
 <h3>getThreshold</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getThreshold</span>()</div>
-<div class="block">Gets the value of the <code>threshold</code> property.</div>
+<div class="block">Gets the reorder threshold.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>threshold</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#thresholdProperty()"><code>thresholdProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the quantity at or below which the item needs reordering</dd>
 </dl>
 </div>
 </section>
@@ -728,15 +731,10 @@ loadScripts(document, 'script');</script>
 <h3>thresholdProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleDoubleProperty</span>&nbsp;<span class="element-name">thresholdProperty</span>()</div>
+<div class="block">Gets the threshold property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>threshold</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#getThreshold()"><code>getThreshold()</code></a></li>
-</ul>
-</dd>
+<dd>the threshold property</dd>
 </dl>
 </div>
 </section>
@@ -746,17 +744,10 @@ loadScripts(document, 'script');</script>
 <h3>getCost</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getCost</span>()</div>
-<div class="block">Gets the value of the <code>cost</code> property.</div>
+<div class="block">Gets the cost of one unit of the item.</div>
 <dl class="notes">
-<dt>Property description:</dt>
 <dt>Returns:</dt>
-<dd>the value of the <code>cost</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#costProperty()"><code>costProperty()</code></a></li>
-</ul>
-</dd>
+<dd>the unit cost</dd>
 </dl>
 </div>
 </section>
@@ -766,15 +757,10 @@ loadScripts(document, 'script');</script>
 <h3>costProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleDoubleProperty</span>&nbsp;<span class="element-name">costProperty</span>()</div>
+<div class="block">Gets the cost property for table binding.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>cost</code> property</dd>
-<dt>See Also:</dt>
-<dd>
-<ul class="tag-list">
-<li><a href="#getCost()"><code>getCost()</code></a></li>
-</ul>
-</dd>
+<dd>the cost property</dd>
 </dl>
 </div>
 </section>
@@ -784,6 +770,12 @@ loadScripts(document, 'script');</script>
 <h3>getStatus</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getStatus</span>()</div>
+<div class="block">Gets the stock status shown in the table's Status column.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>"Reorder"</code> if the quantity on hand is at or below the
+        reorder threshold, <code>"OK"</code> otherwise</dd>
+</dl>
 </div>
 </section>
 </li>

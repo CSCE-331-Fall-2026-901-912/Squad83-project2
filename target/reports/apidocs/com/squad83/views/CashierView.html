@@ -113,6 +113,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">CashierView</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Cashier view for building and submitting customer orders.
+<p>
+Menu items are loaded from the database as buttons grouped by category. The
+cashier picks the size, sugar level, and ice level, adds drinks to the order,
+and checks out with a cashier name, payment method, and optional tip.
+Submitting saves one row to <code>orders</code>, one row per line to
+<code>order_items</code>, and subtracts each drink's recipe from <code>inventory</code>,
+all in one transaction.</div>
 </div>
 </section>
 <section class="summary">
@@ -128,13 +136,20 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="CashierView.CartItem.html" class="type-name-link" title="class in com.squad83.views">CashierView.CartItem</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">One line in the current order: a drink with its size, sugar level, ice level,
+price, and quantity.</div>
+</div>
 <div class="col-first odd-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second odd-row-color"><code><a href="CashierView.EmployeeOption.html" class="type-name-link" title="class in com.squad83.views">CashierView.EmployeeOption</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">An employee shown in the cashier drop-down.</div>
+</div>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="CashierView.MenuOption.html" class="type-name-link" title="class in com.squad83.views">CashierView.MenuOption</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">A menu item shown as a button on the cashier screen.</div>
+</div>
 </div>
 </section>
 </li>
@@ -149,46 +164,74 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>private static javafx.collections.ObservableList<wbr>&lt;<a href="CashierView.CartItem.html" title="class in com.squad83.views">CashierView.CartItem</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#cart" class="member-name-link">cart</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The lines in the current order.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.TableView<wbr>&lt;<a href="CashierView.CartItem.html" title="class in com.squad83.views">CashierView.CartItem</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#cartTable" class="member-name-link">cartTable</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Table showing the lines in the current order.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.ComboBox<wbr>&lt;<a href="CashierView.EmployeeOption.html" title="class in com.squad83.views">CashierView.EmployeeOption</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#employeeBox" class="member-name-link">employeeBox</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Picker for the cashier taking the order.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.ComboBox<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#iceBox" class="member-name-link">iceBox</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Ice level picker: none, less, or regular.</div>
+</div>
 <div class="col-first even-row-color"><code>private static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a></code></div>
 <div class="col-second even-row-color"><code><a href="#LARGE_UPCHARGE" class="member-name-link">LARGE_UPCHARGE</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Extra charge added to the base price of a large drink.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.layout.VBox</code></div>
 <div class="col-second odd-row-color"><code><a href="#menuSections" class="member-name-link">menuSections</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Holds the menu item buttons, grouped under category headings.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.ComboBox<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#paymentBox" class="member-name-link">paymentBox</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Payment method picker: card, cash, or mobile.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.ComboBox<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#sizeBox" class="member-name-link">sizeBox</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Drink size picker: M or L.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.Label</code></div>
 <div class="col-second even-row-color"><code><a href="#subtotalLabel" class="member-name-link">subtotalLabel</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Shows the order subtotal.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.ComboBox<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#sugarBox" class="member-name-link">sugarBox</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Sugar level picker, from 0% to 100%.</div>
+</div>
 <div class="col-first even-row-color"><code>private static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a></code></div>
 <div class="col-second even-row-color"><code><a href="#TAX_RATE" class="member-name-link">TAX_RATE</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Sales tax rate applied to the order subtotal (8.25%).</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.Label</code></div>
 <div class="col-second odd-row-color"><code><a href="#taxLabel" class="member-name-link">taxLabel</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Shows the sales tax on the order.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.TextField</code></div>
 <div class="col-second even-row-color"><code><a href="#tipField" class="member-name-link">tipField</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Optional tip amount entered by the cashier.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.Label</code></div>
 <div class="col-second odd-row-color"><code><a href="#totalLabel" class="member-name-link">totalLabel</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Shows the order total, including tax and tip.</div>
+</div>
 </div>
 </section>
 </li>
@@ -218,44 +261,73 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#addToCart(com.squad83.views.CashierView.MenuOption)" class="member-name-link">addToCart</a><wbr>(<a href="CashierView.MenuOption.html" title="class in com.squad83.views">CashierView.MenuOption</a>&nbsp;option)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Adds a drink to the order using the currently selected size, sugar, and ice.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#changeQuantity(int)" class="member-name-link">changeQuantity</a><wbr>(int&nbsp;change)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Changes the quantity of the selected order line.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#clearOrder()" class="member-name-link">clearOrder</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Empties the order, clears the tip, and resets the payment method to card.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getSubtotal()" class="member-name-link">getSubtotal</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Adds up the line totals of every item in the order.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getTax(java.math.BigDecimal)" class="member-name-link">getTax</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a>&nbsp;subtotal)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Calculates sales tax on a subtotal.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getTip()" class="member-name-link">getTip</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Reads the tip from the tip field.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static javafx.scene.Parent</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getView()" class="member-name-link">getView</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Builds the cashier view and loads the menu and the list of active employees.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadEmployees()" class="member-name-link">loadEmployees</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Loads all active employees into the cashier drop-down.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadMenu()" class="member-name-link">loadMenu</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Loads all active menu items and shows each as a button, grouped under a
+heading for its category.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#removeItem()" class="member-name-link">removeItem</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Removes the selected line from the order, or shows an error if none is selected.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#showError(java.lang.String,java.lang.String)" class="member-name-link">showError</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Shows an error dialog to the user.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#submitOrder()" class="member-name-link">submitOrder</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Validates the order, asks for confirmation, and saves it in one transaction:
+one row in <code>orders</code>, one row per line in <code>order_items</code>, and the
+recipe amounts subtracted from <code>inventory</code>, never going below zero.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#updateTotals()" class="member-name-link">updateTotals</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Recalculates the subtotal, tax, and total and updates their labels.</div>
+</div>
 </div>
 </div>
 </div>
@@ -278,6 +350,7 @@ loadScripts(document, 'script');</script>
 <h3>TAX_RATE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a></span>&nbsp;<span class="element-name">TAX_RATE</span></div>
+<div class="block">Sales tax rate applied to the order subtotal (8.25%).</div>
 </div>
 </section>
 </li>
@@ -286,6 +359,7 @@ loadScripts(document, 'script');</script>
 <h3>LARGE_UPCHARGE</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a></span>&nbsp;<span class="element-name">LARGE_UPCHARGE</span></div>
+<div class="block">Extra charge added to the base price of a large drink.</div>
 </div>
 </section>
 </li>
@@ -294,6 +368,7 @@ loadScripts(document, 'script');</script>
 <h3>menuSections</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.layout.VBox</span>&nbsp;<span class="element-name">menuSections</span></div>
+<div class="block">Holds the menu item buttons, grouped under category headings.</div>
 </div>
 </section>
 </li>
@@ -302,6 +377,7 @@ loadScripts(document, 'script');</script>
 <h3>sizeBox</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.ComboBox&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">sizeBox</span></div>
+<div class="block">Drink size picker: M or L.</div>
 </div>
 </section>
 </li>
@@ -310,6 +386,7 @@ loadScripts(document, 'script');</script>
 <h3>sugarBox</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.ComboBox&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">sugarBox</span></div>
+<div class="block">Sugar level picker, from 0% to 100%.</div>
 </div>
 </section>
 </li>
@@ -318,6 +395,7 @@ loadScripts(document, 'script');</script>
 <h3>iceBox</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.ComboBox&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">iceBox</span></div>
+<div class="block">Ice level picker: none, less, or regular.</div>
 </div>
 </section>
 </li>
@@ -326,6 +404,7 @@ loadScripts(document, 'script');</script>
 <h3>cartTable</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TableView&lt;<a href="CashierView.CartItem.html" title="class in com.squad83.views">CashierView.CartItem</a>&gt;</span>&nbsp;<span class="element-name">cartTable</span></div>
+<div class="block">Table showing the lines in the current order.</div>
 </div>
 </section>
 </li>
@@ -334,6 +413,7 @@ loadScripts(document, 'script');</script>
 <h3>cart</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.collections.ObservableList&lt;<a href="CashierView.CartItem.html" title="class in com.squad83.views">CashierView.CartItem</a>&gt;</span>&nbsp;<span class="element-name">cart</span></div>
+<div class="block">The lines in the current order.</div>
 </div>
 </section>
 </li>
@@ -342,6 +422,7 @@ loadScripts(document, 'script');</script>
 <h3>employeeBox</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.ComboBox&lt;<a href="CashierView.EmployeeOption.html" title="class in com.squad83.views">CashierView.EmployeeOption</a>&gt;</span>&nbsp;<span class="element-name">employeeBox</span></div>
+<div class="block">Picker for the cashier taking the order.</div>
 </div>
 </section>
 </li>
@@ -350,6 +431,7 @@ loadScripts(document, 'script');</script>
 <h3>paymentBox</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.ComboBox&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">paymentBox</span></div>
+<div class="block">Payment method picker: card, cash, or mobile.</div>
 </div>
 </section>
 </li>
@@ -358,6 +440,7 @@ loadScripts(document, 'script');</script>
 <h3>tipField</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TextField</span>&nbsp;<span class="element-name">tipField</span></div>
+<div class="block">Optional tip amount entered by the cashier.</div>
 </div>
 </section>
 </li>
@@ -366,6 +449,7 @@ loadScripts(document, 'script');</script>
 <h3>subtotalLabel</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.Label</span>&nbsp;<span class="element-name">subtotalLabel</span></div>
+<div class="block">Shows the order subtotal.</div>
 </div>
 </section>
 </li>
@@ -374,6 +458,7 @@ loadScripts(document, 'script');</script>
 <h3>taxLabel</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.Label</span>&nbsp;<span class="element-name">taxLabel</span></div>
+<div class="block">Shows the sales tax on the order.</div>
 </div>
 </section>
 </li>
@@ -382,6 +467,7 @@ loadScripts(document, 'script');</script>
 <h3>totalLabel</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.Label</span>&nbsp;<span class="element-name">totalLabel</span></div>
+<div class="block">Shows the order total, including tax and tip.</div>
 </div>
 </section>
 </li>
@@ -414,6 +500,11 @@ loadScripts(document, 'script');</script>
 <h3>getView</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">javafx.scene.Parent</span>&nbsp;<span class="element-name">getView</span>()</div>
+<div class="block">Builds the cashier view and loads the menu and the list of active employees.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the root node of the view, used by App to fill the Cashier tab</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -422,6 +513,8 @@ loadScripts(document, 'script');</script>
 <h3>loadMenu</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadMenu</span>()</div>
+<div class="block">Loads all active menu items and shows each as a button, grouped under a
+heading for its category. Clicking a button adds that drink to the order.</div>
 </div>
 </section>
 </li>
@@ -430,6 +523,7 @@ loadScripts(document, 'script');</script>
 <h3>loadEmployees</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadEmployees</span>()</div>
+<div class="block">Loads all active employees into the cashier drop-down.</div>
 </div>
 </section>
 </li>
@@ -438,6 +532,13 @@ loadScripts(document, 'script');</script>
 <h3>addToCart</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addToCart</span><wbr><span class="parameters">(<a href="CashierView.MenuOption.html" title="class in com.squad83.views">CashierView.MenuOption</a>&nbsp;option)</span></div>
+<div class="block">Adds a drink to the order using the currently selected size, sugar, and ice.
+If the same drink with the same options is already in the order, its quantity
+goes up by one instead. Large drinks cost the base price plus the large upcharge.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>option</code> - the menu item that was clicked</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -446,6 +547,12 @@ loadScripts(document, 'script');</script>
 <h3>changeQuantity</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">changeQuantity</span><wbr><span class="parameters">(int&nbsp;change)</span></div>
+<div class="block">Changes the quantity of the selected order line. A line whose quantity drops
+to zero is removed.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>change</code> - the amount to add to the quantity, such as 1 or -1</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -454,6 +561,7 @@ loadScripts(document, 'script');</script>
 <h3>removeItem</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">removeItem</span>()</div>
+<div class="block">Removes the selected line from the order, or shows an error if none is selected.</div>
 </div>
 </section>
 </li>
@@ -462,6 +570,7 @@ loadScripts(document, 'script');</script>
 <h3>clearOrder</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clearOrder</span>()</div>
+<div class="block">Empties the order, clears the tip, and resets the payment method to card.</div>
 </div>
 </section>
 </li>
@@ -470,6 +579,11 @@ loadScripts(document, 'script');</script>
 <h3>getSubtotal</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a></span>&nbsp;<span class="element-name">getSubtotal</span>()</div>
+<div class="block">Adds up the line totals of every item in the order.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the order subtotal, rounded to cents</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -478,6 +592,13 @@ loadScripts(document, 'script');</script>
 <h3>getTax</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a></span>&nbsp;<span class="element-name">getTax</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a>&nbsp;subtotal)</span></div>
+<div class="block">Calculates sales tax on a subtotal.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>subtotal</code> - the order subtotal</dd>
+<dt>Returns:</dt>
+<dd>the tax, rounded to cents</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -486,6 +607,12 @@ loadScripts(document, 'script');</script>
 <h3>getTip</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigDecimal.html" title="class or interface in java.math" class="external-link">BigDecimal</a></span>&nbsp;<span class="element-name">getTip</span>()</div>
+<div class="block">Reads the tip from the tip field. An empty field counts as no tip.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the tip rounded to cents, or null if the text is not a valid
+        non-negative number</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -494,6 +621,8 @@ loadScripts(document, 'script');</script>
 <h3>updateTotals</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateTotals</span>()</div>
+<div class="block">Recalculates the subtotal, tax, and total and updates their labels. An invalid
+tip is treated as zero here; it is rejected when the order is submitted.</div>
 </div>
 </section>
 </li>
@@ -502,6 +631,10 @@ loadScripts(document, 'script');</script>
 <h3>submitOrder</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">submitOrder</span>()</div>
+<div class="block">Validates the order, asks for confirmation, and saves it in one transaction:
+one row in <code>orders</code>, one row per line in <code>order_items</code>, and the
+recipe amounts subtracted from <code>inventory</code>, never going below zero. If
+any step fails, the whole transaction is rolled back and nothing is saved.</div>
 </div>
 </section>
 </li>
@@ -511,6 +644,12 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">showError</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
+<div class="block">Shows an error dialog to the user.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>title</code> - the dialog's window title</dd>
+<dd><code>message</code> - the explanation shown in the dialog</dd>
+</dl>
 </div>
 </section>
 </li>
