@@ -97,6 +97,40 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ReportsView</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Provides the JavaFX manager interface for creating and viewing operational
+reports from the Squad 83 point-of-sale PostgreSQL database.
+
+<p>Managers select a report from a drop-down menu, optionally choose a date
+range, and view query results in a table whose columns are generated from
+the result-set metadata. The available reports are:</p>
+<ul>
+  <li><b>Sales by Item:</b> quantities sold and sales totals for each menu item
+      over a selected date range, including only completed orders.</li>
+  <li><b>Daily Sales:</b> number of completed orders and total sales by day.</li>
+  <li><b>Best Selling Items:</b> menu items ranked by quantities sold.</li>
+  <li><b>Employee Sales:</b> completed order counts and sales by employee.</li>
+  <li><b>Peak Sales Hours:</b> completed order counts and sales grouped by hour.</li>
+  <li><b>Sales by Payment Method:</b> completed orders and sales by payment type.</li>
+  <li><b>Inventory Reorder:</b> inventory items at or below their reorder levels.</li>
+  <li><b>Product Usage Chart:</b> estimated ingredient usage for completed,
+      top-level order items within a selected date range.</li>
+  <li><b>X-Report:</b> hourly order and sales totals for the latest qualifying
+      day, with an overall total, using <a href="XReportQuery.html#getSql()"><code>XReportQuery.getSql()</code></a>.</li>
+  <li><b>Audit Report:</b> counts and monetary totals for completed sales,
+      voids, refunds, and discards within a selected date range.</li>
+</ul>
+
+<p>This class uses static controls and helper methods to manage the report
+selection, query execution, display, and error dialogs.</p></div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="tag-list">
+<li><a href="../Database.html" title="class in com.squad83"><code>Database</code></a></li>
+<li><a href="XReportQuery.html" title="class in com.squad83.views"><code>XReportQuery</code></a></li>
+</ul>
+</dd>
+</dl>
 </div>
 </section>
 <section class="summary">
@@ -112,19 +146,29 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.DatePicker</code></div>
 <div class="col-second even-row-color"><code><a href="#endDatePicker" class="member-name-link">endDatePicker</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Inclusive end date for reports that support a selected time window.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.ComboBox<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#reportBox" class="member-name-link">reportBox</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Drop-down control used to select which management report to generate.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.Label</code></div>
 <div class="col-second even-row-color"><code><a href="#resultLabel" class="member-name-link">resultLabel</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Label displaying instructions or the latest report's result summary.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.DatePicker</code></div>
 <div class="col-second odd-row-color"><code><a href="#startDatePicker" class="member-name-link">startDatePicker</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Inclusive start date for reports that support a selected time window.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.TableView<wbr>&lt;javafx.collections.ObservableList&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#table" class="member-name-link">table</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Table displaying the columns and rows returned by the selected report.</div>
+</div>
 </div>
 </section>
 </li>
@@ -154,27 +198,41 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#clearReport()" class="member-name-link">clearReport</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Resets the reporting screen to its initial state.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#generateReport()" class="member-name-link">generateReport</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Builds the SQL statement for the selected report and requests its results.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static javafx.scene.Parent</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getView()" class="member-name-link">getView</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Creates the manager reporting view and initializes its JavaFX controls.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadReport(java.lang.String,java.lang.String)" class="member-name-link">loadReport</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sql,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;reportName)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Executes the selected report query and presents its rows in the table.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#showError(java.lang.String,java.lang.String)" class="member-name-link">showError</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Displays a modal JavaFX error dialog with the supplied message.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#usesTimeWindow(java.lang.String)" class="member-name-link">usesTimeWindow</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;report)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Determines whether a selected report accepts a start and end date.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#validateDates()" class="member-name-link">validateDates</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Validates the start and end dates chosen for a time-window report.</div>
+</div>
 </div>
 </div>
 </div>
@@ -197,6 +255,7 @@ loadScripts(document, 'script');</script>
 <h3>table</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TableView&lt;javafx.collections.ObservableList&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;&gt;</span>&nbsp;<span class="element-name">table</span></div>
+<div class="block">Table displaying the columns and rows returned by the selected report.</div>
 </div>
 </section>
 </li>
@@ -205,6 +264,7 @@ loadScripts(document, 'script');</script>
 <h3>reportBox</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.ComboBox&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">reportBox</span></div>
+<div class="block">Drop-down control used to select which management report to generate.</div>
 </div>
 </section>
 </li>
@@ -213,6 +273,7 @@ loadScripts(document, 'script');</script>
 <h3>startDatePicker</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.DatePicker</span>&nbsp;<span class="element-name">startDatePicker</span></div>
+<div class="block">Inclusive start date for reports that support a selected time window.</div>
 </div>
 </section>
 </li>
@@ -221,6 +282,7 @@ loadScripts(document, 'script');</script>
 <h3>endDatePicker</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.DatePicker</span>&nbsp;<span class="element-name">endDatePicker</span></div>
+<div class="block">Inclusive end date for reports that support a selected time window.</div>
 </div>
 </section>
 </li>
@@ -229,6 +291,7 @@ loadScripts(document, 'script');</script>
 <h3>resultLabel</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.Label</span>&nbsp;<span class="element-name">resultLabel</span></div>
+<div class="block">Label displaying instructions or the latest report's result summary.</div>
 </div>
 </section>
 </li>
@@ -261,6 +324,16 @@ loadScripts(document, 'script');</script>
 <h3>getView</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">javafx.scene.Parent</span>&nbsp;<span class="element-name">getView</span>()</div>
+<div class="block">Creates the manager reporting view and initializes its JavaFX controls.
+
+<p>The view includes a report selector, start and end date pickers, buttons
+for generating and clearing a report, a results table, and a status label.
+Date pickers begin with a 30-day range and are enabled only for reports
+that support date filtering.</p></div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the root <code>Parent</code> containing the reporting interface</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -269,6 +342,17 @@ loadScripts(document, 'script');</script>
 <h3>usesTimeWindow</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">usesTimeWindow</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;report)</span></div>
+<div class="block">Determines whether a selected report accepts a start and end date.
+
+<p>Only Sales by Item, Product Usage Chart, and Audit Report use the
+date pickers. Other reports use their own SQL-defined time scope.</p></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>report</code> - the selected report name; may be <code>null</code></dd>
+<dt>Returns:</dt>
+<dd><code>true</code> when the report accepts a custom date range;
+        <code>false</code> otherwise</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -277,6 +361,21 @@ loadScripts(document, 'script');</script>
 <h3>generateReport</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">generateReport</span>()</div>
+<div class="block">Builds the SQL statement for the selected report and requests its results.
+
+<p>The report selector determines which SQL query to use. Queries for
+completed-order reports filter by order status. For Sales by Item,
+Product Usage Chart, and Audit Report, a valid time window is required;
+<a href="#loadReport(java.lang.String,java.lang.String)"><code>loadReport(String, String)</code></a> supplies its timestamp parameters.
+The X-Report SQL is supplied by <a href="XReportQuery.html#getSql()"><code>XReportQuery.getSql()</code></a>.</p>
+
+<p>If no report is selected, the date range is invalid, or the selected
+report is unrecognized, an error dialog is displayed instead.</p>
+
+<p>The Audit Report groups the four supported transaction statuses
+(<code>completed</code>, <code>voided</code>, <code>refunded</code>, and <code>discard</code>)
+and uses a left join so categories with no matching orders still appear
+with zero totals.</p></div>
 </div>
 </section>
 </li>
@@ -285,6 +384,15 @@ loadScripts(document, 'script');</script>
 <h3>validateDates</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">validateDates</span>()</div>
+<div class="block">Validates the start and end dates chosen for a time-window report.
+
+<p>Both dates must be selected, and the start date must not be after
+the end date. Any invalid selection displays an explanatory dialog.</p></div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>true</code> when both dates are present and ordered correctly;
+        <code>false</code> otherwise</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -294,6 +402,20 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadReport</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;sql,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;reportName)</span></div>
+<div class="block">Executes the selected report query and presents its rows in the table.
+
+<p>A JDBC <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.sql/java/sql/PreparedStatement.html" title="class or interface in java.sql" class="external-link"><code>PreparedStatement</code></a> binds date parameters when required,
+using an inclusive start timestamp and an exclusive timestamp at the
+beginning of the day after the selected end date. The method uses
+<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.sql/java/sql/ResultSetMetaData.html" title="class or interface in java.sql" class="external-link"><code>ResultSetMetaData</code></a> to create table columns dynamically, converts
+returned values to strings, and updates the result count/status label.
+SQL errors are displayed through <a href="#showError(java.lang.String,java.lang.String)"><code>showError(String, String)</code></a>.</p></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>sql</code> - the SQL query for the selected management report</dd>
+<dd><code>reportName</code> - the report title used to determine date binding and
+                  describe the displayed results</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -302,6 +424,10 @@ loadScripts(document, 'script');</script>
 <h3>clearReport</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clearReport</span>()</div>
+<div class="block">Resets the reporting screen to its initial state.
+
+<p>Clears the selected report and results, restores the default 30-day
+date range, and replaces the status message with the initial prompt.</p></div>
 </div>
 </section>
 </li>
@@ -311,6 +437,12 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">showError</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
+<div class="block">Displays a modal JavaFX error dialog with the supplied message.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>title</code> - the title displayed in the error dialog window</dd>
+<dd><code>message</code> - the explanation shown to the manager</dd>
+</dl>
 </div>
 </section>
 </li>

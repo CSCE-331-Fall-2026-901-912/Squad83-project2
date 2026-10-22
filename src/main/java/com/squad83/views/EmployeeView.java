@@ -32,6 +32,13 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.time.LocalDate;
 
+/**
+ * JavaFX view for managing the employees of the shop. It displays all
+ * employees in a table and provides a form to add, update, activate or
+ * deactivate, clear, and refresh employees stored in the database.
+ *
+ * @author Squad 83
+ */
 public class EmployeeView {
 
 	private static TableView<Employee> table;
@@ -42,6 +49,13 @@ public class EmployeeView {
 	private static TextField wageField;
 	private static DatePicker hireDatePicker;
 
+	/**
+	 * Builds the employee management screen, including the title, the employee
+	 * table, the input form, and the action buttons. Employees are loaded from
+	 * the database before the view is returned.
+	 *
+	 * @return the root node of the employees view
+	 */
 	public static Parent getView() {
 
 		BorderPane root = new BorderPane();
@@ -158,6 +172,11 @@ public class EmployeeView {
 		return root;
 	}
 
+	/**
+	 * Loads all employees from the database, ordered by employee ID, and places
+	 * them in the table. If a database error occurs, an error dialog is shown
+	 * instead of propagating the exception.
+	 */
 	private static void loadEmployees() {
 
 		ObservableList<Employee> employees = FXCollections.observableArrayList();
@@ -180,6 +199,12 @@ public class EmployeeView {
 		}
 	}
 
+	/**
+	 * Validates the form and inserts a new active employee into the database
+	 * using the values currently entered. The next employee ID is computed as
+	 * part of the insert. On success the table is refreshed and the form is
+	 * cleared.
+	 */
 	private static void addEmployee() {
 
 		if (!validateForm()) {
@@ -211,6 +236,11 @@ public class EmployeeView {
 		}
 	}
 
+	/**
+	 * Updates the employee selected in the table with the values currently in
+	 * the form. An error is shown if no employee is selected or the form is
+	 * invalid. On success the table is refreshed and the form is cleared.
+	 */
 	private static void updateEmployee() {
 
 		Employee selected = table.getSelectionModel().getSelectedItem();
@@ -254,6 +284,12 @@ public class EmployeeView {
 		}
 	}
 
+	/**
+	 * Switches the selected employee between active and inactive. The employee
+	 * is not deleted; only the active flag is flipped in the database. An error
+	 * is shown if no employee is selected. On success the table is refreshed
+	 * and the form is cleared.
+	 */
 	private static void toggleActive() {
 
 		Employee selected = table.getSelectionModel().getSelectedItem();
@@ -280,6 +316,14 @@ public class EmployeeView {
 		}
 	}
 
+	/**
+	 * Checks that the form fields hold valid input: the first and last names
+	 * must not be empty, a role must be chosen, the PIN must be exactly four
+	 * digits, the hourly wage must be a non-negative number, and a hire date
+	 * must be picked. An error dialog is shown for the first problem found.
+	 *
+	 * @return {@code true} if all form fields are valid, {@code false} otherwise
+	 */
 	private static boolean validateForm() {
 
 		if (firstNameField.getText().trim().isEmpty()) {
@@ -315,6 +359,13 @@ public class EmployeeView {
 		return true;
 	}
 
+	/**
+	 * Checks whether the given text is a number that is zero or greater.
+	 *
+	 * @param text the text to check
+	 * @return {@code true} if the text parses as a non-negative number,
+	 *         {@code false} otherwise
+	 */
 	private static boolean isNonNegativeNumber(String text) {
 
 		try {
@@ -325,6 +376,11 @@ public class EmployeeView {
 		}
 	}
 
+	/**
+	 * Resets the form to its default state by clearing the name, PIN, and wage
+	 * fields, removing the role selection, setting the hire date to today, and
+	 * clearing the table selection.
+	 */
 	private static void clearForm() {
 
 		firstNameField.clear();
@@ -337,6 +393,12 @@ public class EmployeeView {
 		table.getSelectionModel().clearSelection();
 	}
 
+	/**
+	 * Displays a modal error dialog and waits for the user to close it.
+	 *
+	 * @param title   the title of the dialog window
+	 * @param message the message shown in the dialog body
+	 */
 	private static void showError(String title, String message) {
 
 		Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -346,6 +408,12 @@ public class EmployeeView {
 		alert.showAndWait();
 	}
 
+	/**
+	 * Model class representing a single row of the employees table. Most
+	 * fields are stored as JavaFX properties so the table can bind to them.
+	 *
+	 * @author Squad 83
+	 */
 	public static class Employee {
 
 		private final SimpleIntegerProperty id;
@@ -357,6 +425,18 @@ public class EmployeeView {
 		private final LocalDate hireDate;
 		private final SimpleBooleanProperty active;
 
+		/**
+		 * Creates an employee with the given values.
+		 *
+		 * @param id        the unique employee ID
+		 * @param firstName the first name of the employee
+		 * @param lastName  the last name of the employee
+		 * @param role      the role of the employee, such as manager or cashier
+		 * @param pin       the 4-digit PIN of the employee, as text
+		 * @param wage      the hourly wage of the employee
+		 * @param hireDate  the date the employee was hired
+		 * @param active    whether the employee is currently active
+		 */
 		public Employee(int id, String firstName, String lastName, String role, String pin, double wage, LocalDate hireDate, boolean active) {
 
 			this.id = new SimpleIntegerProperty(id);
@@ -369,58 +449,129 @@ public class EmployeeView {
 			this.active = new SimpleBooleanProperty(active);
 		}
 
+		/**
+		 * Gets the employee ID.
+		 *
+		 * @return the employee ID
+		 */
 		public int getId() {
 			return id.get();
 		}
 
+		/**
+		 * Gets the ID property for table binding.
+		 *
+		 * @return the ID property
+		 */
 		public SimpleIntegerProperty idProperty() {
 			return id;
 		}
 
+		/**
+		 * Gets the first name of the employee.
+		 *
+		 * @return the first name
+		 */
 		public String getFirstName() {
 			return firstName.get();
 		}
 
+		/**
+		 * Gets the first name property for table binding.
+		 *
+		 * @return the first name property
+		 */
 		public SimpleStringProperty firstNameProperty() {
 			return firstName;
 		}
 
+		/**
+		 * Gets the last name of the employee.
+		 *
+		 * @return the last name
+		 */
 		public String getLastName() {
 			return lastName.get();
 		}
 
+		/**
+		 * Gets the last name property for table binding.
+		 *
+		 * @return the last name property
+		 */
 		public SimpleStringProperty lastNameProperty() {
 			return lastName;
 		}
 
+		/**
+		 * Gets the role of the employee.
+		 *
+		 * @return the role
+		 */
 		public String getRole() {
 			return role.get();
 		}
 
+		/**
+		 * Gets the role property for table binding.
+		 *
+		 * @return the role property
+		 */
 		public SimpleStringProperty roleProperty() {
 			return role;
 		}
 
+		/**
+		 * Gets the PIN of the employee.
+		 *
+		 * @return the PIN, as text
+		 */
 		public String getPin() {
 			return pin.get();
 		}
 
+		/**
+		 * Gets the PIN property for table binding.
+		 *
+		 * @return the PIN property
+		 */
 		public SimpleStringProperty pinProperty() {
 			return pin;
 		}
 
+		/**
+		 * Gets the hourly wage of the employee.
+		 *
+		 * @return the hourly wage
+		 */
 		public double getWage() {
 			return wage.get();
 		}
 
+		/**
+		 * Gets the wage property for table binding.
+		 *
+		 * @return the wage property
+		 */
 		public SimpleDoubleProperty wageProperty() {
 			return wage;
 		}
 
+		/**
+		 * Gets the hire date of the employee.
+		 *
+		 * @return the hire date
+		 */
 		public LocalDate getHireDate() {
 			return hireDate;
 		}
 
+		/**
+		 * Gets the employment status of the employee as display text.
+		 *
+		 * @return {@code "Active"} if the employee is active, {@code "Inactive"}
+		 *         otherwise
+		 */
 		public String getStatus() {
 			if (active.get()) {
 				return "Active";

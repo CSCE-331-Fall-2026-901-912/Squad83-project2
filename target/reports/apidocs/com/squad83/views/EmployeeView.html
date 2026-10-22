@@ -102,6 +102,13 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">EmployeeView</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">JavaFX view for managing the employees of the shop. It displays all
+employees in a table and provides a form to add, update, activate or
+deactivate, clear, and refresh employees stored in the database.</div>
+<dl class="notes">
+<dt>Author:</dt>
+<dd>Squad 83</dd>
+</dl>
 </div>
 </section>
 <section class="summary">
@@ -117,7 +124,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="EmployeeView.Employee.html" class="type-name-link" title="class in com.squad83.views">EmployeeView.Employee</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Model class representing a single row of the employees table.</div>
+</div>
 </div>
 </section>
 </li>
@@ -180,32 +189,59 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#addEmployee()" class="member-name-link">addEmployee</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Validates the form and inserts a new active employee into the database
+using the values currently entered.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#clearForm()" class="member-name-link">clearForm</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Resets the form to its default state by clearing the name, PIN, and wage
+fields, removing the role selection, setting the hire date to today, and
+clearing the table selection.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static javafx.scene.Parent</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getView()" class="member-name-link">getView</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Builds the employee management screen, including the title, the employee
+table, the input form, and the action buttons.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isNonNegativeNumber(java.lang.String)" class="member-name-link">isNonNegativeNumber</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Checks whether the given text is a number that is zero or greater.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadEmployees()" class="member-name-link">loadEmployees</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Loads all employees from the database, ordered by employee ID, and places
+them in the table.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#showError(java.lang.String,java.lang.String)" class="member-name-link">showError</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Displays a modal error dialog and waits for the user to close it.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#toggleActive()" class="member-name-link">toggleActive</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Switches the selected employee between active and inactive.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#updateEmployee()" class="member-name-link">updateEmployee</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Updates the employee selected in the table with the values currently in
+the form.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#validateForm()" class="member-name-link">validateForm</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Checks that the form fields hold valid input: the first and last names
+must not be empty, a role must be chosen, the PIN must be exactly four
+digits, the hourly wage must be a non-negative number, and a hire date
+must be picked.</div>
+</div>
 </div>
 </div>
 </div>
@@ -308,6 +344,13 @@ loadScripts(document, 'script');</script>
 <h3>getView</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">javafx.scene.Parent</span>&nbsp;<span class="element-name">getView</span>()</div>
+<div class="block">Builds the employee management screen, including the title, the employee
+table, the input form, and the action buttons. Employees are loaded from
+the database before the view is returned.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the root node of the employees view</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -316,6 +359,9 @@ loadScripts(document, 'script');</script>
 <h3>loadEmployees</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadEmployees</span>()</div>
+<div class="block">Loads all employees from the database, ordered by employee ID, and places
+them in the table. If a database error occurs, an error dialog is shown
+instead of propagating the exception.</div>
 </div>
 </section>
 </li>
@@ -324,6 +370,10 @@ loadScripts(document, 'script');</script>
 <h3>addEmployee</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addEmployee</span>()</div>
+<div class="block">Validates the form and inserts a new active employee into the database
+using the values currently entered. The next employee ID is computed as
+part of the insert. On success the table is refreshed and the form is
+cleared.</div>
 </div>
 </section>
 </li>
@@ -332,6 +382,9 @@ loadScripts(document, 'script');</script>
 <h3>updateEmployee</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateEmployee</span>()</div>
+<div class="block">Updates the employee selected in the table with the values currently in
+the form. An error is shown if no employee is selected or the form is
+invalid. On success the table is refreshed and the form is cleared.</div>
 </div>
 </section>
 </li>
@@ -340,6 +393,10 @@ loadScripts(document, 'script');</script>
 <h3>toggleActive</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">toggleActive</span>()</div>
+<div class="block">Switches the selected employee between active and inactive. The employee
+is not deleted; only the active flag is flipped in the database. An error
+is shown if no employee is selected. On success the table is refreshed
+and the form is cleared.</div>
 </div>
 </section>
 </li>
@@ -348,6 +405,14 @@ loadScripts(document, 'script');</script>
 <h3>validateForm</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">validateForm</span>()</div>
+<div class="block">Checks that the form fields hold valid input: the first and last names
+must not be empty, a role must be chosen, the PIN must be exactly four
+digits, the hourly wage must be a non-negative number, and a hire date
+must be picked. An error dialog is shown for the first problem found.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>true</code> if all form fields are valid, <code>false</code> otherwise</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -356,6 +421,14 @@ loadScripts(document, 'script');</script>
 <h3>isNonNegativeNumber</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isNonNegativeNumber</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text)</span></div>
+<div class="block">Checks whether the given text is a number that is zero or greater.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>text</code> - the text to check</dd>
+<dt>Returns:</dt>
+<dd><code>true</code> if the text parses as a non-negative number,
+        <code>false</code> otherwise</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -364,6 +437,9 @@ loadScripts(document, 'script');</script>
 <h3>clearForm</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clearForm</span>()</div>
+<div class="block">Resets the form to its default state by clearing the name, PIN, and wage
+fields, removing the role selection, setting the hire date to today, and
+clearing the table selection.</div>
 </div>
 </section>
 </li>
@@ -373,6 +449,12 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">showError</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
+<div class="block">Displays a modal error dialog and waits for the user to close it.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>title</code> - the title of the dialog window</dd>
+<dd><code>message</code> - the message shown in the dialog body</dd>
+</dl>
 </div>
 </section>
 </li>

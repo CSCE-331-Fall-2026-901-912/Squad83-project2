@@ -111,6 +111,8 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="modifiers">public static class </span><span class="element-name type-name-label">SeasonalItemView.RecipeLine</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">One line of the recipe being built: an inventory item and the amount of it
+used per drink.</div>
 </div>
 </section>
 <section class="summary">
@@ -126,13 +128,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#amountTextProperty" class="member-name-link">amountText</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Returns the formatted amount, bound to the Amount column.</div>
+</div>
 <div class="col-first odd-row-color"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#categoryProperty" class="member-name-link">category</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Returns the item category, bound to the Category column.</div>
+</div>
 <div class="col-first even-row-color"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#nameProperty" class="member-name-link">name</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Returns the item name, bound to the Inventory Item column.</div>
+</div>
 </div>
 </section>
 </li>
@@ -147,22 +155,34 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>private double</code></div>
 <div class="col-second even-row-color"><code><a href="#amount" class="member-name-link">amount</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The amount used per drink.</div>
+</div>
 <div class="col-first odd-row-color"><code>private final javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#amountText" class="member-name-link">amountText</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The formatted amount and unit, shown in the Amount column.</div>
+</div>
 <div class="col-first even-row-color"><code>private final javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#category" class="member-name-link">category</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The item's category, shown in the Category column.</div>
+</div>
 <div class="col-first odd-row-color"><code>private final int</code></div>
 <div class="col-second odd-row-color"><code><a href="#inventoryId" class="member-name-link">inventoryId</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The inventory_id of the item used.</div>
+</div>
 <div class="col-first even-row-color"><code>private final javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#name" class="member-name-link">name</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The item's name, shown in the Inventory Item column.</div>
+</div>
 <div class="col-first odd-row-color"><code>private final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#unit" class="member-name-link">unit</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">The unit of measure of the item used.</div>
+</div>
 </div>
 </section>
 </li>
@@ -176,7 +196,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(com.squad83.views.SeasonalItemView.InventoryOption,double)" class="member-name-link">RecipeLine</a><wbr>(<a href="SeasonalItemView.InventoryOption.html" title="class in com.squad83.views">SeasonalItemView.InventoryOption</a>&nbsp;item,
  double&nbsp;amount)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates a recipe line.</div>
+</div>
 </div>
 </section>
 </li>
@@ -193,25 +215,39 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#amountTextProperty()" class="member-name-link">amountTextProperty</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the formatted amount, bound to the Amount column.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#categoryProperty()" class="member-name-link">categoryProperty</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the item category, bound to the Category column.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#formatAmount()" class="member-name-link">formatAmount</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Formats the amount with its unit for display, without trailing zeros.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>double</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getAmount()" class="member-name-link">getAmount</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the amount used per drink.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getInventoryId()" class="member-name-link">getInventoryId</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the inventory_id of the item used.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.SimpleStringProperty</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#nameProperty()" class="member-name-link">nameProperty</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the item name, bound to the Inventory Item column.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setAmount(double)" class="member-name-link">setAmount</a><wbr>(double&nbsp;newAmount)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Changes the amount used and updates the displayed text.</div>
+</div>
 </div>
 </div>
 </div>
@@ -234,6 +270,7 @@ loadScripts(document, 'script');</script>
 <h3>name</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">nameProperty</span></div>
+<div class="block">Returns the item name, bound to the Inventory Item column.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -250,6 +287,7 @@ loadScripts(document, 'script');</script>
 <h3>category</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">categoryProperty</span></div>
+<div class="block">Returns the item category, bound to the Category column.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -266,6 +304,7 @@ loadScripts(document, 'script');</script>
 <h3>amountText</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">amountTextProperty</span></div>
+<div class="block">Returns the formatted amount, bound to the Amount column.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -290,6 +329,7 @@ loadScripts(document, 'script');</script>
 <h3>inventoryId</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">inventoryId</span></div>
+<div class="block">The inventory_id of the item used.</div>
 </div>
 </section>
 </li>
@@ -298,6 +338,7 @@ loadScripts(document, 'script');</script>
 <h3>unit</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">unit</span></div>
+<div class="block">The unit of measure of the item used.</div>
 </div>
 </section>
 </li>
@@ -306,6 +347,7 @@ loadScripts(document, 'script');</script>
 <h3>amount</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">amount</span></div>
+<div class="block">The amount used per drink.</div>
 </div>
 </section>
 </li>
@@ -314,6 +356,7 @@ loadScripts(document, 'script');</script>
 <h3>name</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">name</span></div>
+<div class="block">The item's name, shown in the Inventory Item column.</div>
 </div>
 </section>
 </li>
@@ -322,6 +365,7 @@ loadScripts(document, 'script');</script>
 <h3>category</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">category</span></div>
+<div class="block">The item's category, shown in the Category column.</div>
 </div>
 </section>
 </li>
@@ -330,6 +374,7 @@ loadScripts(document, 'script');</script>
 <h3>amountText</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">amountText</span></div>
+<div class="block">The formatted amount and unit, shown in the Amount column.</div>
 </div>
 </section>
 </li>
@@ -347,6 +392,12 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">RecipeLine</span><wbr><span class="parameters">(<a href="SeasonalItemView.InventoryOption.html" title="class in com.squad83.views">SeasonalItemView.InventoryOption</a>&nbsp;item,
  double&nbsp;amount)</span></div>
+<div class="block">Creates a recipe line.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>item</code> - the inventory item used</dd>
+<dd><code>amount</code> - the amount used per drink, in the item's unit</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -363,6 +414,11 @@ loadScripts(document, 'script');</script>
 <h3>formatAmount</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">formatAmount</span>()</div>
+<div class="block">Formats the amount with its unit for display, without trailing zeros.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the amount and unit, for example "1.5 oz"</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -371,6 +427,11 @@ loadScripts(document, 'script');</script>
 <h3>getInventoryId</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getInventoryId</span>()</div>
+<div class="block">Returns the inventory_id of the item used.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the inventory_id of the item used</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -379,6 +440,11 @@ loadScripts(document, 'script');</script>
 <h3>getAmount</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getAmount</span>()</div>
+<div class="block">Returns the amount used per drink.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the amount used per drink</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -387,6 +453,11 @@ loadScripts(document, 'script');</script>
 <h3>setAmount</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setAmount</span><wbr><span class="parameters">(double&nbsp;newAmount)</span></div>
+<div class="block">Changes the amount used and updates the displayed text.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>newAmount</code> - the new amount used per drink</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -395,9 +466,10 @@ loadScripts(document, 'script');</script>
 <h3>nameProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">nameProperty</span>()</div>
+<div class="block">Returns the item name, bound to the Inventory Item column.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>name</code> property</dd>
+<dd>the item name, bound to the Inventory Item column</dd>
 </dl>
 </div>
 </section>
@@ -407,9 +479,10 @@ loadScripts(document, 'script');</script>
 <h3>categoryProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">categoryProperty</span>()</div>
+<div class="block">Returns the item category, bound to the Category column.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>category</code> property</dd>
+<dd>the item category, bound to the Category column</dd>
 </dl>
 </div>
 </section>
@@ -419,9 +492,10 @@ loadScripts(document, 'script');</script>
 <h3>amountTextProperty</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.SimpleStringProperty</span>&nbsp;<span class="element-name">amountTextProperty</span>()</div>
+<div class="block">Returns the formatted amount, bound to the Amount column.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>the <code>amountText</code> property</dd>
+<dd>the formatted amount, bound to the Amount column</dd>
 </dl>
 </div>
 </section>

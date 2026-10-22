@@ -90,6 +90,13 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">App</span>
 <span class="extends-implements">extends javafx.application.Application</span></div>
+<div class="block">Main JavaFX application for the Squad 83 point-of-sale system. It starts on
+a role selection screen where the user chooses to continue as a manager or
+a cashier, and then shows the matching set of views.</div>
+<dl class="notes">
+<dt>Author:</dt>
+<dd>Squad 83</dd>
+</dl>
 </div>
 </section>
 <section class="summary">
@@ -138,22 +145,40 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private javafx.scene.Parent</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createPlaceholder(java.lang.String)" class="member-name-link">createPlaceholder</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Creates a simple placeholder screen that shows the given name followed by
+"View" in a centered label.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#main(java.lang.String%5B%5D)" class="member-name-link">main</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;args)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Launches the JavaFX application.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#showCashierView(javafx.stage.Stage)" class="member-name-link">showCashierView</a><wbr>(javafx.stage.Stage&nbsp;primaryStage)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Shows the cashier screen, which has a single cashier tab along with a
+button that returns to the role selection screen.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#showManagerView(javafx.stage.Stage)" class="member-name-link">showManagerView</a><wbr>(javafx.stage.Stage&nbsp;primaryStage)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Shows the manager screen, which has tabs for menu items, inventory,
+employees, reports, and seasonal items, along with a button that returns
+to the role selection screen.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#showRoleSelection(javafx.stage.Stage)" class="member-name-link">showRoleSelection</a><wbr>(javafx.stage.Stage&nbsp;primaryStage)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Shows the role selection screen, which displays the application title and
+buttons for choosing the manager or cashier view.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#start(javafx.stage.Stage)" class="member-name-link">start</a><wbr>(javafx.stage.Stage&nbsp;primaryStage)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Starts the application by setting the window title and showing the role
+selection screen.</div>
+</div>
 </div>
 </div>
 </div>
@@ -195,9 +220,13 @@ loadScripts(document, 'script');</script>
 <h3>start</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">start</span><wbr><span class="parameters">(javafx.stage.Stage&nbsp;primaryStage)</span></div>
+<div class="block">Starts the application by setting the window title and showing the role
+selection screen.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code>start</code>&nbsp;in class&nbsp;<code>javafx.application.Application</code></dd>
+<dt>Parameters:</dt>
+<dd><code>primaryStage</code> - the primary window of the application</dd>
 </dl>
 </div>
 </section>
@@ -207,6 +236,12 @@ loadScripts(document, 'script');</script>
 <h3>showRoleSelection</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">showRoleSelection</span><wbr><span class="parameters">(javafx.stage.Stage&nbsp;primaryStage)</span></div>
+<div class="block">Shows the role selection screen, which displays the application title and
+buttons for choosing the manager or cashier view.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>primaryStage</code> - the window in which the screen is shown</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -215,6 +250,13 @@ loadScripts(document, 'script');</script>
 <h3>showManagerView</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">showManagerView</span><wbr><span class="parameters">(javafx.stage.Stage&nbsp;primaryStage)</span></div>
+<div class="block">Shows the manager screen, which has tabs for menu items, inventory,
+employees, reports, and seasonal items, along with a button that returns
+to the role selection screen.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>primaryStage</code> - the window in which the screen is shown</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -223,6 +265,12 @@ loadScripts(document, 'script');</script>
 <h3>showCashierView</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">showCashierView</span><wbr><span class="parameters">(javafx.stage.Stage&nbsp;primaryStage)</span></div>
+<div class="block">Shows the cashier screen, which has a single cashier tab along with a
+button that returns to the role selection screen.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>primaryStage</code> - the window in which the screen is shown</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -231,6 +279,14 @@ loadScripts(document, 'script');</script>
 <h3>createPlaceholder</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">javafx.scene.Parent</span>&nbsp;<span class="element-name">createPlaceholder</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name)</span></div>
+<div class="block">Creates a simple placeholder screen that shows the given name followed by
+"View" in a centered label.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>name</code> - the name displayed in the placeholder label</dd>
+<dt>Returns:</dt>
+<dd>the root node of the placeholder screen</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -239,6 +295,11 @@ loadScripts(document, 'script');</script>
 <h3>main</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">main</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]&nbsp;args)</span></div>
+<div class="block">Launches the JavaFX application.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>args</code> - the command-line arguments passed to the application</dd>
+</dl>
 </div>
 </section>
 </li>

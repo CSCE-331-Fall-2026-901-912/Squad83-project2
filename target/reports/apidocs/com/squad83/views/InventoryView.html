@@ -103,6 +103,14 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">InventoryView</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">JavaFX view for managing the shop's inventory. It displays all inventory
+items in a table along with a status that flags items at or below their
+reorder threshold, and provides a form to add, update, restock, clear, and
+refresh items stored in the database.</div>
+<dl class="notes">
+<dt>Author:</dt>
+<dd>Squad 83</dd>
+</dl>
 </div>
 </section>
 <section class="summary">
@@ -118,7 +126,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static class&nbsp;</code></div>
 <div class="col-second even-row-color"><code><a href="InventoryView.InventoryItem.html" class="type-name-link" title="class in com.squad83.views">InventoryView.InventoryItem</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Model class representing a single row of the inventory table.</div>
+</div>
 </div>
 </section>
 </li>
@@ -133,28 +143,44 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.ComboBox<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#categoryBox" class="member-name-link">categoryBox</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Category picker (ingredient, topping, or supply).</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.TextField</code></div>
 <div class="col-second odd-row-color"><code><a href="#costField" class="member-name-link">costField</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Cost of one unit of the item.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.TextField</code></div>
 <div class="col-second even-row-color"><code><a href="#nameField" class="member-name-link">nameField</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Name of the inventory item.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.TextField</code></div>
 <div class="col-second odd-row-color"><code><a href="#quantityField" class="member-name-link">quantityField</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Quantity currently on hand.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.TextField</code></div>
 <div class="col-second even-row-color"><code><a href="#restockField" class="member-name-link">restockField</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Amount to add to the selected item when restocking.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.TableView<wbr>&lt;<a href="InventoryView.InventoryItem.html" title="class in com.squad83.views">InventoryView.InventoryItem</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#table" class="member-name-link">table</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Table showing every inventory item.</div>
+</div>
 <div class="col-first even-row-color"><code>private static javafx.scene.control.TextField</code></div>
 <div class="col-second even-row-color"><code><a href="#thresholdField" class="member-name-link">thresholdField</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Quantity at or below which the item needs to be reordered.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static javafx.scene.control.ComboBox<wbr>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#unitBox" class="member-name-link">unitBox</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Unit picker (oz, g, or each).</div>
+</div>
 </div>
 </section>
 </li>
@@ -184,32 +210,60 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#addItem()" class="member-name-link">addItem</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Validates the form and inserts a new inventory item into the database
+using the values currently entered.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#clearForm()" class="member-name-link">clearForm</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Resets the form to its default state by clearing every text field,
+removing the category and unit selections, and clearing the table
+selection.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static javafx.scene.Parent</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getView()" class="member-name-link">getView</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Builds the inventory management screen, including the title, the
+inventory table, the input form, the restock row, and the action
+buttons.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isNonNegativeNumber(java.lang.String)" class="member-name-link">isNonNegativeNumber</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Checks whether the given text is a number that is 0 or greater.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadItems()" class="member-name-link">loadItems</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Loads all inventory items from the database, ordered by inventory ID,
+and places them in the table.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#restockItem()" class="member-name-link">restockItem</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Adds the amount entered in the restock field to the quantity on hand of
+the item selected in the table.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#showError(java.lang.String,java.lang.String)" class="member-name-link">showError</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Displays a modal error dialog and waits for the user to close it.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#updateItem()" class="member-name-link">updateItem</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Updates the inventory item selected in the table with the values
+currently in the form.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#validateForm()" class="member-name-link">validateForm</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Checks that the form fields hold valid input: the name must not be
+empty, a category and unit must be chosen, and the quantity, reorder
+threshold, and unit cost must be non-negative numbers.</div>
+</div>
 </div>
 </div>
 </div>
@@ -232,6 +286,7 @@ loadScripts(document, 'script');</script>
 <h3>table</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TableView&lt;<a href="InventoryView.InventoryItem.html" title="class in com.squad83.views">InventoryView.InventoryItem</a>&gt;</span>&nbsp;<span class="element-name">table</span></div>
+<div class="block">Table showing every inventory item.</div>
 </div>
 </section>
 </li>
@@ -240,6 +295,7 @@ loadScripts(document, 'script');</script>
 <h3>nameField</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TextField</span>&nbsp;<span class="element-name">nameField</span></div>
+<div class="block">Name of the inventory item.</div>
 </div>
 </section>
 </li>
@@ -248,6 +304,7 @@ loadScripts(document, 'script');</script>
 <h3>categoryBox</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.ComboBox&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">categoryBox</span></div>
+<div class="block">Category picker (ingredient, topping, or supply).</div>
 </div>
 </section>
 </li>
@@ -256,6 +313,7 @@ loadScripts(document, 'script');</script>
 <h3>unitBox</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.ComboBox&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name">unitBox</span></div>
+<div class="block">Unit picker (oz, g, or each).</div>
 </div>
 </section>
 </li>
@@ -264,6 +322,7 @@ loadScripts(document, 'script');</script>
 <h3>quantityField</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TextField</span>&nbsp;<span class="element-name">quantityField</span></div>
+<div class="block">Quantity currently on hand.</div>
 </div>
 </section>
 </li>
@@ -272,6 +331,7 @@ loadScripts(document, 'script');</script>
 <h3>thresholdField</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TextField</span>&nbsp;<span class="element-name">thresholdField</span></div>
+<div class="block">Quantity at or below which the item needs to be reordered.</div>
 </div>
 </section>
 </li>
@@ -280,6 +340,7 @@ loadScripts(document, 'script');</script>
 <h3>costField</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TextField</span>&nbsp;<span class="element-name">costField</span></div>
+<div class="block">Cost of one unit of the item.</div>
 </div>
 </section>
 </li>
@@ -288,6 +349,7 @@ loadScripts(document, 'script');</script>
 <h3>restockField</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">javafx.scene.control.TextField</span>&nbsp;<span class="element-name">restockField</span></div>
+<div class="block">Amount to add to the selected item when restocking.</div>
 </div>
 </section>
 </li>
@@ -320,6 +382,15 @@ loadScripts(document, 'script');</script>
 <h3>getView</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">javafx.scene.Parent</span>&nbsp;<span class="element-name">getView</span>()</div>
+<div class="block">Builds the inventory management screen, including the title, the
+inventory table, the input form, the restock row, and the action
+buttons. Selecting a row in the table fills the form with that item's
+values. Inventory items are loaded from the database before the view is
+returned.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the root node of the inventory view</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -328,6 +399,9 @@ loadScripts(document, 'script');</script>
 <h3>loadItems</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadItems</span>()</div>
+<div class="block">Loads all inventory items from the database, ordered by inventory ID,
+and places them in the table. If a database error occurs, an error
+dialog is shown instead of propagating the exception.</div>
 </div>
 </section>
 </li>
@@ -336,6 +410,10 @@ loadScripts(document, 'script');</script>
 <h3>addItem</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addItem</span>()</div>
+<div class="block">Validates the form and inserts a new inventory item into the database
+using the values currently entered. The new item's ID is one more than
+the largest existing ID. On success the table is refreshed and the form
+is cleared.</div>
 </div>
 </section>
 </li>
@@ -344,6 +422,10 @@ loadScripts(document, 'script');</script>
 <h3>updateItem</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateItem</span>()</div>
+<div class="block">Updates the inventory item selected in the table with the values
+currently in the form. An error is shown if no item is selected or the
+form is invalid. On success the table is refreshed and the form is
+cleared.</div>
 </div>
 </section>
 </li>
@@ -352,6 +434,10 @@ loadScripts(document, 'script');</script>
 <h3>restockItem</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">restockItem</span>()</div>
+<div class="block">Adds the amount entered in the restock field to the quantity on hand of
+the item selected in the table. An error is shown if no item is
+selected or the amount is not a number greater than 0. On success the
+table is refreshed and the form is cleared.</div>
 </div>
 </section>
 </li>
@@ -360,6 +446,14 @@ loadScripts(document, 'script');</script>
 <h3>validateForm</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">validateForm</span>()</div>
+<div class="block">Checks that the form fields hold valid input: the name must not be
+empty, a category and unit must be chosen, and the quantity, reorder
+threshold, and unit cost must be non-negative numbers. An error dialog
+is shown for the first problem found.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd><code>true</code> if all form fields are valid, <code>false</code> otherwise</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -368,6 +462,13 @@ loadScripts(document, 'script');</script>
 <h3>isNonNegativeNumber</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isNonNegativeNumber</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text)</span></div>
+<div class="block">Checks whether the given text is a number that is 0 or greater.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>text</code> - the text to check</dd>
+<dt>Returns:</dt>
+<dd><code>true</code> if the text is a non-negative number, <code>false</code> otherwise</dd>
+</dl>
 </div>
 </section>
 </li>
@@ -376,6 +477,9 @@ loadScripts(document, 'script');</script>
 <h3>clearForm</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">clearForm</span>()</div>
+<div class="block">Resets the form to its default state by clearing every text field,
+removing the category and unit selections, and clearing the table
+selection.</div>
 </div>
 </section>
 </li>
@@ -385,6 +489,12 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">showError</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;title,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;message)</span></div>
+<div class="block">Displays a modal error dialog and waits for the user to close it.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>title</code> - the title of the dialog window</dd>
+<dd><code>message</code> - the message shown in the dialog body</dd>
+</dl>
 </div>
 </section>
 </li>

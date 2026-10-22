@@ -1,7 +1,23 @@
 package com.squad83.views;
 
+/**
+ * Holds the SQL query behind the X report. The report shows the completed
+ * orders and sales for each hour of the most recent business day, followed by
+ * a total row for the whole day.
+ *
+ * @author Squad 83
+ */
 public class XReportQuery {
 
+	/**
+	 * Gets the SQL for the X report. The query looks at the most recent day
+	 * that has at least 50 completed orders and returns one row per hour with
+	 * the order count and sales total, plus a final row labeled {@code TOTAL}
+	 * for the whole day. Each row has the columns {@code report_date},
+	 * {@code hour}, {@code total_orders}, and {@code total_sales}.
+	 *
+	 * @return the SQL text of the X report query
+	 */
 	public static String getSql() {
 
 		// latest_day skips days with fewer than 50 completed orders, such as single test orders

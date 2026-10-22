@@ -81,6 +81,13 @@ loadScripts(document, 'script');</script>
 <div class="horizontal-scroll">
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">XReportQuery</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Holds the SQL query behind the X report. The report shows the completed
+orders and sales for each hour of the most recent business day, followed by
+a total row for the whole day.</div>
+<dl class="notes">
+<dt>Author:</dt>
+<dd>Squad 83</dd>
+</dl>
 </div>
 </section>
 <section class="summary">
@@ -111,7 +118,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getSql()" class="member-name-link">getSql</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Gets the SQL for the X report.</div>
+</div>
 </div>
 </div>
 </div>
@@ -150,6 +159,15 @@ loadScripts(document, 'script');</script>
 <h3>getSql</h3>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getSql</span>()</div>
+<div class="block">Gets the SQL for the X report. The query looks at the most recent day
+that has at least 50 completed orders and returns one row per hour with
+the order count and sales total, plus a final row labeled <code>TOTAL</code>
+for the whole day. Each row has the columns <code>report_date</code>,
+<code>hour</code>, <code>total_orders</code>, and <code>total_sales</code>.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the SQL text of the X report query</dd>
+</dl>
 </div>
 </section>
 </li>
